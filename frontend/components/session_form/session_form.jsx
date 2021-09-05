@@ -1,5 +1,4 @@
 import React from 'react';
-import { login } from '../../actions/session_actions';
 
 
 class SessionForm extends React.Component {
@@ -41,14 +40,14 @@ class SessionForm extends React.Component {
   demoLogin(e) {
     e.preventDefault();
     const player = { username: 'demouser', password: 'password' }
-    dispatch(login(player));
+    this.props.demoUserLogin(player);
   }
 
   render() {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to BenchBnB!
+          Welcome to Streve!
           <br/>
           Please {this.props.formType} or {this.props.navLink}
           {this.renderErrors()}
