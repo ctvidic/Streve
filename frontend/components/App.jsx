@@ -1,8 +1,9 @@
-import { browserHistory, Router, Route } from 'react-router';
+import { browserHistory, Router, Route,Switch } from 'react-router-dom';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
+import UserShowContainer from './user/user_container'
 
 const App = () => (
     <div>
@@ -10,9 +11,11 @@ const App = () => (
             <h1>Streve</h1>
             <GreetingContainer />
         </header>
-
-        <Route path="/login" component={LogInFormContainer} />
-        <Route path="/signup" component={SignUpFormContainer} />
+        <Switch>
+        <Route exact path="/login" component={LogInFormContainer} />
+        <Route exact path="/signup" component={SignUpFormContainer} />
+        <Route exact path="/users/:id"/>
+        </Switch>
     </div>
 );
 
