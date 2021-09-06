@@ -23,8 +23,8 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user)
-    this.props.history.push(`./users/${user.id}`)
+    this.props.processForm(user).then(()=>{
+    this.props.history.push(`./users/${this.props.userId}`)})
   }
 
   renderErrors() {
@@ -42,8 +42,8 @@ class SessionForm extends React.Component {
   demoLogin(e) {
     e.preventDefault();
     const player = { username: 'newuser',email: 'blahblahblah@gmail.com', password: 'password'}
-    this.props.demoUserLogin(player)
-    this.props.history.push(`./users/${player.id}`)
+    this.props.demoUserLogin(player).then(()=>{
+    this.props.history.push(`./users/${this.props.userId}`)})
   }
 
   render() {

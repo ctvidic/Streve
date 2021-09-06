@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = ({ errors, session }) => {
+  if (errors.session === undefined){
+
+  }else{
   return {
+    userId: session.id,
     errors: errors.session,
     formType: 'login',
     navLink: <Link to="/signup">sign up instead</Link>,
-  };
+  };}
 };
 
 const mapDispatchToProps = dispatch => {

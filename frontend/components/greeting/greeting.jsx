@@ -11,13 +11,20 @@ const Greeting = ({ currentUser, logout }) => {
       <Link to="/signup">Sign up!</Link>
     </nav>
   );
+
+  const loggingOut = () => {
+    return logout
+  }
+
+  const redirect =()=>{
+    // return (<Redirect to="/dashboard" />)
+  }
   const personalGreeting = () => (
     <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+    <h2 className="header-name">Hi, {currentUser.username}!</h2>
+    <button className="header-button" onClick={loggingOut(),redirect()}>Log Out</button>
     </hgroup>
   );
-
   return currentUser ? personalGreeting() : sessionLinks();
 };
 
