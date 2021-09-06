@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router'
 
 
 
@@ -13,16 +14,19 @@ const Greeting = ({ currentUser, logout }) => {
   );
 
   const loggingOut = () => {
-    return logout
+    return 
   }
 
-  const redirect =()=>{
-    // return (<Redirect to="/dashboard" />)
+  const redirect = () => {
+    return (
+      logout
+    )
   }
+  
   const personalGreeting = () => (
     <hgroup className="header-group">
     <h2 className="header-name">Hi, {currentUser.username}!</h2>
-    <button className="header-button" onClick={loggingOut(),redirect()}>Log Out</button>
+    <button className="header-button" onClick={redirect()}>Log Out</button>
     </hgroup>
   );
   return currentUser ? personalGreeting() : sessionLinks();

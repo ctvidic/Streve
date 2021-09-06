@@ -1,32 +1,23 @@
-export const fetchWorkouts = data => (
+export const fetchWorkouts = ()=> (
     $.ajax({
         method: 'GET',
-        url: 'api/benches',
-        data
+        url: `api/workouts`,
+        error: (err) => console.log(err)
     })
 );
 
-export const fetchBench = id => (
+export const fetchWorkout = id => (
     $.ajax({
         method: 'GET',
-        url: `api/benches/${id}`
+        url: `api/workouts/${id}`
     })
 );
 
-export const createReview = review => (
+export const createWorkout = workout => (
     $.ajax({
         method: 'POST',
-        url: 'api/reviews',
-        data: { review }
+        url: 'api/workout',
+        data: { workout }
     })
 );
 
-export const createBench = benchForm => (
-    $.ajax({
-        method: 'POST',
-        url: 'api/benches',
-        data: benchForm,
-        contentType: false,
-        processData: false
-    })
-);
