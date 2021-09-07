@@ -8,9 +8,11 @@ import WorkoutFormContainer from './workout/workout_form_container'
 import ShowWorkoutContainer from './workout/show_workout_container'
 
 const App = () => (
-    <div>
+    <div id='webpage'>
         <header>
-            <h1 id='title'>Streve</h1>
+            <div id='topHeader'>
+                <h1 id='title'>Streve</h1>
+            </div>
             <GreetingContainer />
         </header>
         <Switch>

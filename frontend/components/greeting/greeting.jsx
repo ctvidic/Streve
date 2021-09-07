@@ -8,9 +8,9 @@ import { NavLink } from 'react-router-dom'
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
+      {/* <Link to="/login">Login</Link>
       &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
+      <Link to="/signup">Sign up!</Link> */}
     </nav>
   );
 
@@ -26,7 +26,7 @@ const Greeting = ({ currentUser, logout }) => {
   
   const personalGreeting = () => (
     <hgroup className="header-group">
-    <h2 className="header-name">Hi, {currentUser.username}!</h2>
+    {/* <h2 className="header-name">{currentUser.username}</h2> */}
     <NavLink exact to="/login" onClick={redirect()}>Logout</NavLink>
     </hgroup>
   );
