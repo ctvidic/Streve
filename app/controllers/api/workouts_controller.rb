@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Api::WorkoutsController < ApplicationController
 def new
     render :new
@@ -19,6 +21,15 @@ end
 
 def index
     @workouts = Workout.all
+end
+
+def destroy
+    @workout = Workout.find(params[:id])
+    if @workout.destroy
+      render :show
+    else
+      render json: @workout.errors.full_messages, status: 422
+    end
 end
 
 protected

@@ -2,6 +2,8 @@ import * as APIUtil from '../util/workout_api_util';
 
 export const RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
 export const RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
+export const REMOVE_WORKOUT = 'REMOVE_WORKOUT';
+
 
 const receiveWorkouts = workouts => ({
     type: RECEIVE_WORKOUTS,
@@ -11,6 +13,11 @@ const receiveWorkouts = workouts => ({
 const receiveWorkout = (workout) => ({
     type: RECEIVE_WORKOUT,
     workout,
+});
+
+const removeWorkout = (workoutId) => ({
+    type: REMOVE_WORKOUT,
+    workoutId,
 });
 
 export const fetchWorkouts = () => dispatch => (
@@ -30,3 +37,7 @@ export const createWorkout = workout => dispatch => (
         dispatch(receiveWorkout(workout))
     ))
 );
+
+export const deleteWorkout = workout => dispatch => (
+    APIUtil.deleteWorkout(workout).then(workout=> (dispatch(removeWorkout(workout.id))))
+)

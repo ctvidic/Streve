@@ -10,13 +10,14 @@ class ShowWorkout extends React.Component{
         this.props.fetchWorkouts()
     }
 
-    render(){
+    render() {
         return(<div>
             <li>Route Id:{this.state.route_id} </li>
             <li>Type:{this.state.workout_type}</li>
             <li>Duration:{this.state.duration} </li>
             <li>Elevation Change:{this.state.elevation_change} </li>
             <li>Distance:{this.state.distance} </li>
+            <button onClick={()=>this.props.removeWorkout(this.state)}>Remove Workout</button>
             </div>)
     }
 }
