@@ -1,0 +1,5 @@
+class ChangeNull < ActiveRecord::Migration[6.1]
+  def change
+      change_column_null(:workouts, :date, true)
+  end
+end

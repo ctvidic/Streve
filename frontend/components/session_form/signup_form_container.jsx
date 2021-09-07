@@ -11,9 +11,6 @@ const mapStateToProps = ({errors, session}) => {
   }else{
     x = session.id
   }
-  if (errors === undefined){
-
-  }
   return {
     userId: x,
     errors: errors.session,

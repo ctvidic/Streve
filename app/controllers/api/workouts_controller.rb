@@ -1,8 +1,11 @@
-require 'byebug'
 class Api::WorkoutsController < ApplicationController
+def new
+    render :new
+end
 
 def create
-    @workout = Workout.new(user_params)
+    @workout = Workout.new(workout_params)
+
     if @workout.save
       render :show
     else
@@ -22,7 +25,7 @@ protected
 
 def workout_params
     params.require(:workout).permit(:user_id,:route_id, :workout_type,
-    :duration, :elevation_change, :distance, :date, :created_at, :updated_at)
+    :duration, :elevation_change, :distance,:date ,:created_at, :updated_at)
 end
 
 

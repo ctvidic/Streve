@@ -24,3 +24,9 @@ export const fetchWorkout = id => dispatch => (
         dispatch(receiveWorkout(workout))
     ))
 );
+
+export const createWorkout = workout => dispatch => (
+    APIUtil.createWorkout(workout).then(workout => (
+        dispatch(receiveWorkout(workout))
+    ))
+);
