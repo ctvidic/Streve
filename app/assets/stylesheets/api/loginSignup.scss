@@ -60,20 +60,20 @@
 #username {
     height: 30px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
 
 }
 
 #email {
     height: 30px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #password {
     height: 30px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
 
 }
     // align-items: center;;
@@ -92,12 +92,13 @@
 }
 
 .session-submit{
+    margin-top: 20px;
+
     background-color: orangered;
-    padding:5px;
     color: white;
     outline: none;
     letter-spacing: 1px;
-    height: 30px;
+    height: 40px;
     border: none;
 
 
@@ -105,12 +106,12 @@
 
 .form-demo-button{
     background-color: orangered;
-    padding:5px;
     color: white;
     outline: none;
     letter-spacing: 1px;
-    height: 30px;
+    height: 40px;
     border: none;
+    margin-top: 20px;
 
 }
 
@@ -124,5 +125,8 @@
 
 .login-image{
     z-index: -3;
-    position:fixed;
+    position:absolute;
+    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
 }

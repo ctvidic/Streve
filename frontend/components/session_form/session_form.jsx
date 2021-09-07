@@ -47,9 +47,16 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    let value
+    if(this.props.formType === 'Log In'){
+      value = 'https://dgalywyr863hv.cloudfront.net/pictures/clubs/74106/6093399/2/large.jpg'
+    }else{
+      value = 'https://cdn2.cyclist.co.uk/sites/cyclist/files/2020/05/lake_district_013.jpg'
+    }
     return (
       <div id='fullscreen'>
-      <img className='login-image' src='https://dgalywyr863hv.cloudfront.net/pictures/clubs/74106/6093399/2/large.jpg'></img>
+      
+      <img className='login-image' src={value}></img>
       <div className="login-form-container">
         <div className="login-box">
         <form onSubmit={this.handleSubmit} className="login-form-box">
