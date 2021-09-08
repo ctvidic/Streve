@@ -13,6 +13,7 @@ const mSTP = (state, ownProps) => {
             elevation_change: 0,
             distance: 0
         },
+        pins: [],
         user_id: state.session.id
 
     })
