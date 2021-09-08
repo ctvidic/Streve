@@ -50,7 +50,7 @@ class Greeting extends React.Component{
   );
   if (this.props.currentUser) {
       return personalGreeting();
-  } else if (this.state.link === "http://localhost:3000/#/login"){
+  } else if (this.state.link.includes("/login")){
     return signUp();
   } else{
     return sessionLinks();
