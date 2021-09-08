@@ -16,7 +16,6 @@ class Greeting extends React.Component{
   }
 
   componentDidUpdate(prevProps,prevState) {
-    debugger;
     if (prevState.link !== window.location.href){
     this.setState({
       link: window.location.href

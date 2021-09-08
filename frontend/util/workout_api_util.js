@@ -1,8 +1,8 @@
 export const fetchWorkouts = ()=> (
     $.ajax({
         method: 'GET',
-        url: `api/workouts`,
-        error: (err) => console.log(err)
+        url: `api/workouts`
+        // error: (err) => console.log(err)
     })
 );
 
