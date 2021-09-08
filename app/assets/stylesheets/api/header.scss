@@ -22,9 +22,20 @@
 
 
 body{
-    background-color: #f1efef;
+    background-color: #ffffff;
     z-index: -1;
 
 }
+
+#base{
+    height: 150px;
+    background-color: rgb(47, 49, 48);
+    z-index: 8;
+    color:rgb(70, 73, 71);
+    overflow:auto;
+    width: 100%
+}
+
+
 
 

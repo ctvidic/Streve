@@ -1,0 +1,77 @@
+#splash{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#splash-header{
+    margin-top: 8%;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.login-signup{
+    position:absolute;
+    z-index: 5; 
+    top: 1.5%;
+    padding: 5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    left: 80%;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 3px;
+}
+
+.login-signup:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.login-signup a{
+    color:  rgb(77, 77, 77);
+    text-decoration: none;
+}
+
+#phoneForm{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#phonepic{
+    width: 600px;
+}
+
+#boxes a{
+    padding: 30px;
+    border: 1px solid gray;
+    color:  rgb(77, 77, 77);
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: ghostwhite;
+    padding: 20px;
+}
+
+#smalltext{
+    color:  rgb(155, 155, 155);
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    padding: 50px;
+
+}
+
+#formColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

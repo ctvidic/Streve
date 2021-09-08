@@ -20,7 +20,7 @@ class WorkoutForm extends React.Component{
     render(){
         const workout = { user_id: 17, route_id: 2, workout_type: 'run', duration: 200, elevation_change: 200, distance: 200 }
         return(
-            <div>
+            <div id="workoutform">
                 <h1>New Workout Form</h1>
                 <form onSubmit={()=>this.submitForm()}>
                     <label>Choose a route

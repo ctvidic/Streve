@@ -6,6 +6,8 @@ import GreetingContainer from './greeting/greeting_container';
 import UserShowContainer from './user/user_show_container'
 import WorkoutFormContainer from './workout/workout_form_container'
 import ShowWorkoutContainer from './workout/show_workout_container'
+import SplashContainer from './splash/splash_container'
+
 
 const App = () => (
     <div id='webpage'>
@@ -21,6 +23,7 @@ const App = () => (
             <Route exact path="/users/:id" component={UserShowContainer}/>
             <Route exact path="/workouts/new" component={WorkoutFormContainer}/>
             <Route exact path="/workouts/:id" component={ShowWorkoutContainer} />
+            <Route exact path="/" component={SplashContainer} />
         </Switch>
     </div>
 );
