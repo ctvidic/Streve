@@ -12,6 +12,8 @@ class WorkoutForm extends React.Component{
             pins: this.props.pins,
             directionsRenderer: new google.maps.DirectionsRenderer({ draggable: true, markerOptions: { draggable: true } }),
             directionsService: new google.maps.DirectionsService(),
+            distance: '0.0 mi',
+            time: '0 min'
         }
         this.addPin= this.addPin.bind(this);
         this.calculateAndDisplayRoutes = this.calculateAndDisplayRoutes.bind(this)
@@ -56,6 +58,7 @@ class WorkoutForm extends React.Component{
 
     calculateAndDisplayRoutes(map) {
             let distance;
+            let time;
             this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
             let origin = waypoints.shift().location
@@ -69,7 +72,9 @@ class WorkoutForm extends React.Component{
             }, (response, status) => {
                 if (status === 'OK') {
                     distance = response.routes[0].legs[0].distance.text;
-                    this.setState({distance})
+                    time = response.routes[0].legs[0].duration.text;
+                    debugger;
+                    this.setState({distance, time})
                     this.state.directionsRenderer.setDirections(response);
                 } else {
                     window.alert('Directions request failed due to ' + status);
@@ -102,14 +107,14 @@ class WorkoutForm extends React.Component{
     render(){
         return(
             <div id="workoutform">
-                <h1>New Workout Form</h1>
-                <form onSubmit={()=>this.submitForm()}>
+                <form onSubmit={()=>this.submitForm()} id='mapForm'>
+                    <div id="mapInput">
                     <label>Choose a route
                         <input type='text' onChange={this.update('route_id')} value={this.state.route_id}></input>
                     </label>
                     <br></br>
                     <label>Workout Type
-                    <select onClick={this.update('workout_type')} value={this.state.workout_type}>
+                    <select onChange={this.update('workout_type')} value={this.state.workout_type}>
                         <option value="run">Run</option>
                         <option value="swim">Swim</option>
                         <option value="cycling">Cycling</option>
@@ -124,19 +129,38 @@ class WorkoutForm extends React.Component{
                         <input type='text' onChange={this.update('elevation_change')} value={this.state.elevation_change}></input>
                     </label>
                     <br></br>
-                    <label>Distance
+                    {/* <label>Distance
                         <input type='text' onChange={this.update('distance')} value={this.state.distance}></input>
-                    </label>
+                    </label> */}
                     <br></br>
                     <button value='submit'>Submit</button>
+                    </div>
                     <div id='map'>
                         MAP
                     </div>
                 </form>
+                <div id="bottombar">
+                    <div id="showDistance">
+                        <div id="distanceText">
+                        Distance:
+                        </div>
+                        <div id="distanceDisplay">
+                            {this.state.distance}
+                        </div>
+                    </div>
+                    <div id="estMovingTime">
+                        <div id="estText">
+                            Est.Moving Time
+                        </div>
+                        <div id="estDisplay">
+                            {this.state.time}
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-export default GoogleApiWrapper({ apiKey:'AIzaSyAb2z7bbhF1gSlA7MbjLjg_kFhQzkTIad4'})(WorkoutForm)
+export default GoogleApiWrapper({ apiKey: 'AIzaSyAb2z7bbhF1gSlA7MbjLjg_kFhQzkTIad4'})(WorkoutForm)
 // export default WorkoutForm
