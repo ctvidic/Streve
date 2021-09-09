@@ -26,18 +26,19 @@ class WorkoutForm extends React.Component{
         }
         this.addPin= this.addPin.bind(this);
         this.calculateAndDisplayRoutes = this.calculateAndDisplayRoutes.bind(this)
-
     }
     submitForm(){
+        let pinEdit = this.state.pins.map(pin => [pin.location.lat, pin.location.lng])
+        let newPinEdit = Array.prototype.concat.apply([], pinEdit);
         let submit= {user_id: this.state.workout.user_id, 
             route_id: parseInt(this.state.route_id) || null,
             workout_type: this.state.workout_type || 'run',
             duration: parseInt(this.state.duration) || null,
             elevation_change: parseInt(this.state.climb) || null,
-            distance: parseInt(this.state.distance) || null
+            distance: parseInt(this.state.distance) || null,
+            coordinates: newPinEdit
         }
         // this.state.workout
-
         this.props.createWorkout(submit).then(() => {
           this.props.history.push(`../users/${this.props.user_id}`)
         })
@@ -115,6 +116,7 @@ class WorkoutForm extends React.Component{
             }, (response,status) => {
                 let eleArr
                 if (status === 'OK') {
+                    debugger;
                     eleArr = response.map(eleObj => eleObj.elevation)
                     let climbAndDescent= this.findClimbAndDescent(eleArr)
                     this.setState({ climb: climbAndDescent[0], descent: climbAndDescent[1]})
