@@ -12,7 +12,7 @@
 }
 
 #mapForm{
-       margin-left: 51px;
+    //    margin-left: 51px;
     display:flex;
     justify-content: flex-start;
     align-items: center;
@@ -25,7 +25,10 @@
 #mapInput{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80vh;
+    width: 250px;
 }
 
 #bottombar{
@@ -67,3 +70,56 @@
     flex-direction: column;
     justify-content: center;
 }
+
+#climb{
+    width: 200px;
+    height: 100%;
+    border: 1px solid rgb(230, 224, 224);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#climbDisplay{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#routeHeader{
+    font-weight: bold;
+    height: 20px;
+    padding: 20px;
+}
+
+i {
+    position:absolute;
+}
+
+#activityIcon{
+    height: 50px;
+}
+
+#submitWorkout{
+    width: 80%;
+    height: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(255, 112, 60);
+    outline: none;
+    letter-spacing: 1px;
+    height: 40px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 3px;
+    color: white
+}
+
+#workoutSelect{
+    width: 80%;
+    height: 20px;
+}
+
+#durationInput{
+    width: 80%;
+    height: 30px;
+}
+
