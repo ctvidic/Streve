@@ -8,18 +8,26 @@ class WorkoutForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            workout: this.props.workout,
+            workout: props.workout,
             pins: this.props.pins,
             directionsRenderer: new google.maps.DirectionsRenderer({ draggable: true, markerOptions: { draggable: true } }),
             directionsService: new google.maps.DirectionsService(),
-            distance: '0 mi'
         }
         this.addPin= this.addPin.bind(this);
         this.calculateAndDisplayRoutes = this.calculateAndDisplayRoutes.bind(this)
 
     }
     submitForm(){
-        this.props.createWorkout(this.state).then(() => {
+        let submit= {user_id: this.state.workout.user_id, 
+            route_id: parseInt(this.state.route_id) || null,
+            workout_type: this.state.workout_type || 'run',
+            duration: parseInt(this.state.duration) || null,
+            elevation_change: parseInt(this.state.elevation_change) || null,
+            distance: parseInt(this.state.distance) || null
+        }
+        // this.state.workout
+
+        this.props.createWorkout(submit).then(() => {
           this.props.history.push(`../users/${this.props.user_id}`)
         })
     }
@@ -67,6 +75,7 @@ class WorkoutForm extends React.Component{
                     window.alert('Directions request failed due to ' + status);
                 }
             });
+            this.setState({workout_type: 'run'})
     }
 
     addPin(location, map){
@@ -91,7 +100,6 @@ class WorkoutForm extends React.Component{
     }
 
     render(){
-        const workout = { user_id: 17, route_id: 2, workout_type: 'run', duration: 200, elevation_change: 200, distance: 200 }
         return(
             <div id="workoutform">
                 <h1>New Workout Form</h1>
@@ -101,7 +109,7 @@ class WorkoutForm extends React.Component{
                     </label>
                     <br></br>
                     <label>Workout Type
-                    <select onChange={this.update('workout_type')}>
+                    <select onClick={this.update('workout_type')} value={this.state.workout_type}>
                         <option value="run">Run</option>
                         <option value="swim">Swim</option>
                         <option value="cycling">Cycling</option>
@@ -109,11 +117,11 @@ class WorkoutForm extends React.Component{
                     </label>
                     <br></br>
                     <label>Duration
-                    <input type='text' onChange={this.update('duration')} value={this.state.workout.duration}></input>
+                    <input type='text' onChange={this.update('duration')} value={this.state.duration}></input>
                     </label>
                     <br></br>
                     <label>Elevation Change
-                        <input type='text' onChange={this.update('elevation_change')} value={this.state.workout.elevation_change}></input>
+                        <input type='text' onChange={this.update('elevation_change')} value={this.state.elevation_change}></input>
                     </label>
                     <br></br>
                     <label>Distance
@@ -122,7 +130,7 @@ class WorkoutForm extends React.Component{
                     <br></br>
                     <button value='submit'>Submit</button>
                     <div id='map'>
-                        MfasdfasdfasdfasdfasdfasdfaAP
+                        MAP
                     </div>
                 </form>
             </div>
@@ -131,3 +139,4 @@ class WorkoutForm extends React.Component{
 }
 
 export default GoogleApiWrapper({ apiKey:'AIzaSyAb2z7bbhF1gSlA7MbjLjg_kFhQzkTIad4'})(WorkoutForm)
+// export default WorkoutForm
