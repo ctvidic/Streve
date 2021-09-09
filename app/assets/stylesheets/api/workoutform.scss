@@ -1,6 +1,6 @@
 #workoutform{
     position: relative;
-    top: 51px; 
+    top: 35px; 
     font-family: 'Roboto', sans-serif;
 
 }
@@ -8,14 +8,15 @@
 
 #map{
    width: 100vw;
-   height: 80vh;
+   height: 90vh;
 }
 
 #mapForm{
     //    margin-left: 51px;
     display:flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    height: 100vh;
 }
 
 #map{
