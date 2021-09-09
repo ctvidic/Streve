@@ -11,7 +11,6 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
-
   }
 
   update(field) {
@@ -40,7 +39,9 @@ class SessionForm extends React.Component {
   }
 
   demoLogin(e) {
+    debugger;
     e.preventDefault();
+    console.log('demologin');
     const player = { username: 'newuser',email: 'blahblahblah@gmail.com', password: 'password'}
     this.props.demoUserLogin(player).then(()=>{
     this.props.history.push(`./users/${this.props.userId}`)})
@@ -108,7 +109,6 @@ class SessionForm extends React.Component {
               <br></br>
             </div>
           </div>
-          
         </form>
         </div>
       </div>

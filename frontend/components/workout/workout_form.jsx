@@ -11,9 +11,11 @@ class WorkoutForm extends React.Component{
             workout: this.props.workout,
             pins: this.props.pins,
             directionsRenderer: new google.maps.DirectionsRenderer({ draggable: true, markerOptions: { draggable: true } }),
-            directionsService: new google.maps.DirectionsService()
+            directionsService: new google.maps.DirectionsService(),
+            distance: '0 mi'
         }
         this.addPin= this.addPin.bind(this);
+        this.calculateAndDisplayRoutes = this.calculateAndDisplayRoutes.bind(this)
 
     }
     submitForm(){
@@ -26,7 +28,7 @@ class WorkoutForm extends React.Component{
         const mapOptions = {
             center: { lat: 40.7128, lng: -74.0060 },
             zoom: 12,
-            mapId: "8e0a97af9386fef",
+            mapId: "2635966e05b3c0d6",
             disableDefaultUI: true,
             zoomControl: true,
         }
@@ -45,18 +47,22 @@ class WorkoutForm extends React.Component{
     }
 
     calculateAndDisplayRoutes(map) {
-            this.state.directionsRenderer.setMap(map);  
+            let distance;
+            this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
-            let origin = waypoints.shift()
-            let destination = waypoints.pop()
+            let origin = waypoints.shift().location
+            let destination = waypoints.pop().location
+            let newwaypoints = waypoints.map(pin => ({location: pin, stopover: false}))
             this.state.directionsService.route({
                 origin: origin,
                 destination: destination,
-                waypoints: waypoints,
+                waypoints: newwaypoints,
                 travelMode: 'WALKING'
             }, (response, status) => {
                 if (status === 'OK') {
-                    this.state.directionsDisplay.setDirections(response);
+                    distance = response.routes[0].legs[0].distance.text;
+                    this.setState({distance})
+                    this.state.directionsRenderer.setDirections(response);
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
@@ -72,7 +78,7 @@ class WorkoutForm extends React.Component{
         let newlat = pin.getPosition().lat();
         let newlng = pin.getPosition().lng();
         
-        this.state.pins.push({lat: newlat, lng: newlng})
+        this.state.pins.push({location: {lat: newlat, lng: newlng}})
 
         if(this.state.pins.length > 1){
             this.calculateAndDisplayRoutes(map)
@@ -86,7 +92,6 @@ class WorkoutForm extends React.Component{
 
     render(){
         const workout = { user_id: 17, route_id: 2, workout_type: 'run', duration: 200, elevation_change: 200, distance: 200 }
-
         return(
             <div id="workoutform">
                 <h1>New Workout Form</h1>
@@ -112,7 +117,7 @@ class WorkoutForm extends React.Component{
                     </label>
                     <br></br>
                     <label>Distance
-                        <input type='text' onChange={this.update('distance')} value={this.state.workout.distance}></input>
+                        <input type='text' onChange={this.update('distance')} value={this.state.distance}></input>
                     </label>
                     <br></br>
                     <button value='submit'>Submit</button>
@@ -125,4 +130,4 @@ class WorkoutForm extends React.Component{
     }
 }
 
-export default GoogleApiWrapper({ apiKey:'AIzaSyA9qS2wjPALTYuRbFAVKeC0oz6sB0jrj4g'})(WorkoutForm)
+export default GoogleApiWrapper({ apiKey:'AIzaSyAb2z7bbhF1gSlA7MbjLjg_kFhQzkTIad4'})(WorkoutForm)
