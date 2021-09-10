@@ -7,10 +7,14 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       email: '',
-      password: '',
+      password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+  }
+
+  componentWillUnmount(){
+      this.props.clearErrors();
   }
 
   update(field) {
@@ -27,12 +31,10 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return(
+    return (
       <ul>
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
+          <li key={i}>{error}</li>
         ))}
       </ul>
     );
@@ -47,6 +49,8 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    debugger;
+    let errors
     let value
     if(this.props.formType === 'Log In'){
       value = 'https://dgalywyr863hv.cloudfront.net/pictures/clubs/74106/6093399/2/large.jpg'

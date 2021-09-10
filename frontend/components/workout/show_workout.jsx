@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-
+import Chart from "react-google-charts";
 
 class ShowWorkout extends React.Component{
     constructor(props){
@@ -27,10 +27,10 @@ class ShowWorkout extends React.Component{
             zoomControl: true,
         }
         this.props.fetchWorkouts()
-
         this.map = new google.maps.Map(document.getElementById('showmap'), mapOptions);
 
-
+      
+       
 
     }
     findOrigin(coords){
@@ -52,11 +52,9 @@ class ShowWorkout extends React.Component{
         for(let i = 0; i<mappedNewCoords.length; i+=2){
             finalArr.push({location: {location: {lat: parseFloat(mappedNewCoords[i]), lng: parseFloat(mappedNewCoords[i+1])}}})
         }
-        debugger;
         return finalArr
     }
     calculateCoords(coords){
-        
         this.state.directionsRenderer.setMap(this.map);
         let origin = this.findOrigin(this.props.workout.coordinates)
         let destination = this.findDestination(this.props.workout.coordinates)
@@ -68,7 +66,6 @@ class ShowWorkout extends React.Component{
             travelMode: 'WALKING',
         }, (response, status) => {
             if (status === 'OK') {
-                debugger;
                 // distance = response.routes[0].legs[0].distance.text;
                 // this.setState({ distance, pace })
                 this.state.directionsRenderer.setDirections(response);
@@ -77,24 +74,91 @@ class ShowWorkout extends React.Component{
             }
         });
     }
+    eleChart(eleArr){
+        let newArr = [['', '']]
 
-    render() {
-        if (this.props.workout.coordinates !== undefined){
-        this.calculateCoords(this.props.workout.coordinates)
+        for (let i =0;i<eleArr.length; i++){
+            newArr.push([i,parseInt(eleArr[i])])
         }
+        return newArr
+    }
 
-        return(<div>
-            <div id="showWorkout">
-            <li>Route Id:{this.props.workout.route_id} </li>
-            <li>Type:{this.props.workout.workout_type}</li>
-            <li>Duration:{this.props.workout.duration} </li>
-            <li>Elevation Change:{this.props.workout.elevation_change} </li>
-            <li>Distance:{this.props.workout.distance} </li>
-            <NavLink to={`/users/${this.props.sessionId}`} 
-                onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>
-            <li>Coordinates: {this.props.workout.coordinates}</li>
+    convertTime(mins){
+        let hours = (mins / 60);
+        let rhours = Math.floor(hours);
+        let minutes = (hours - rhours) * 60;
+        let rminutes = Math.round(minutes);
+        return `${rhours}:${rminutes}`
+    }
+
+    convertPace(duration, distance){
+        return parseInt(duration/distance)
+    }
+    render() {
+        let eleData
+        let pace = this.convertPace(this.props.workout.duration, this.props.workout.distance)
+        let newTime = this.convertTime(this.props.workout.duration)
+        if (this.props.workout.coordinates !== undefined){
+            this.calculateCoords(this.props.workout.coordinates)
+        }
+        if (this.props.workout.elevationData !== undefined){
+            eleData = this.eleChart(this.props.workout.elevationData);
+        }
+        let username 
+        if (this.props.username[this.props.workout.user_id] !== undefined){
+            username = this.props.username[this.props.workout.user_id].username
+        }else{
+            username = ""
+        }
+        return(<div id="showWorkout">
+            <div id="showWorkoutstats">
+            <div id="titleBox">
+                    <h1>{username} - {this.props.workout.workout_type}</h1>
+                    <NavLink to={`/users/${this.props.sessionId}`}
+                            onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>
+            </div>
+            <div id="box">
+            <div id="boxleft">
+
+            </div>
+            <div id="boxright">
+            {/* <li>Type:{this.props.workout.workout_type}</li> */}
+            <div id="topBoxRight">
+            <h1>Duration: {newTime}</h1>
+            <h1>Pace: {pace} mins/mi</h1>
+            <h1>Distance: {this.props.workout.distance} mi </h1>
+            </div>
+            <div id="topBoxRight">
+            <h1>Created At: {this.props.workout.created_at} </h1>
+            <h1>Elevation Gain: {this.props.workout.elevation_change} ft </h1>
+            </div>
+           
+            </div>
+            </div>
             </div>
             <div id='showmap'>
+            </div>
+            <div id='eleChart'>
+                <Chart
+                    chartType="LineChart"
+                    loader={<div>Loading Elevation Chart</div>}
+                    data={eleData}
+                    options={{
+                        hAxis: {
+                             textPosition: 'none' 
+                        },
+                        vAxis: {
+                            title: 'Elevation (m)',
+                        }, 
+                        series: {
+                            curveType: 'function'
+                        },
+                        legend: {
+                            position: 'none'
+                        }
+                    }}
+                    rootProps={{ 'data-testid': '1' }}
+                />
             </div>
             </div>)
     }

@@ -22,21 +22,28 @@ class WorkoutForm extends React.Component{
             pace: '0 mph',
             climb: '0',
             descent: '0',
-            duration: 0
+            duration: 0,
+            eleArr: [],
+            estTime: '0 mins',
+            workout_type: 'run'
         }
+        this.origin=''
         this.addPin= this.addPin.bind(this);
         this.calculateAndDisplayRoutes = this.calculateAndDisplayRoutes.bind(this)
+        this.updateWorkoutType = this.updateWorkoutType.bind(this)
     }
     submitForm(){
         let pinEdit = this.state.pins.map(pin => [pin.location.lat, pin.location.lng])
         let newPinEdit = Array.prototype.concat.apply([], pinEdit);
+        let inputEle = this.state.eleArr.map(ele => parseInt(ele))
         let submit= {user_id: this.state.workout.user_id, 
             route_id: parseInt(this.state.route_id) || null,
             workout_type: this.state.workout_type || 'run',
             duration: parseInt(this.state.duration) || null,
             elevation_change: parseInt(this.state.climb) || null,
             distance: parseInt(this.state.distance) || null,
-            coordinates: newPinEdit
+            coordinates: newPinEdit,
+            elevationData: inputEle
         }
         // this.state.workout
         this.props.createWorkout(submit).then(() => {
@@ -90,6 +97,13 @@ class WorkoutForm extends React.Component{
     calculateAndDisplayRoutes(map) {
             let distance;
             let pace;
+            let estTime
+            let travelMode
+            if (this.state.workout_type === 'cycling'){
+                travelMode = 'BICYCLING'
+            }else{
+                travelMode = 'WALKING'
+            }
             this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
             let elePoints = this.convPoints(waypoints);
@@ -100,11 +114,12 @@ class WorkoutForm extends React.Component{
                 origin: origin,
                 destination: destination,
                 waypoints: newwaypoints,
-                travelMode: 'WALKING',
+                travelMode: travelMode,
             }, (response, status) => {
                 if (status === 'OK') {
                     distance = response.routes[0].legs[0].distance.text;
-                    this.setState({distance, pace})
+                    estTime = response.routes[0].legs[0].duration.text;
+                    this.setState({distance, pace, estTime})
                     this.state.directionsRenderer.setDirections(response);
                 } else {
                     window.alert('Directions request failed due to ' + status);
@@ -116,16 +131,15 @@ class WorkoutForm extends React.Component{
             }, (response,status) => {
                 let eleArr
                 if (status === 'OK') {
-                    debugger;
                     eleArr = response.map(eleObj => eleObj.elevation)
                     let climbAndDescent= this.findClimbAndDescent(eleArr)
-                    this.setState({ climb: climbAndDescent[0], descent: climbAndDescent[1]})
+                    this.setState({ climb: climbAndDescent[0], descent: climbAndDescent[1], eleArr: eleArr})
                 }else{
                     window.alert('Elevation request failed due to ' + status);
                 }
             });
             // this.updatePins();
-            this.setState({workout_type: 'run'})
+            // this.setState({workout_type: 'run'})
     }
 
     addPin(location, map){
@@ -148,6 +162,26 @@ class WorkoutForm extends React.Component{
         }
     }
 
+    loopRoute(){
+        if (this.state.pins.length > 1){
+        let initial = this.state.pins[0];
+        let newLatLng = new google.maps.LatLng(parseFloat(initial.location.lat), parseFloat(initial.location.lng));
+        let displayMap = this.map
+        let pin = new google.maps.Marker({
+            position: newLatLng,
+            displayMap,
+            visible: true,
+        });
+        let newlat = pin.getPosition().lat();
+        let newlng = pin.getPosition().lng();
+
+        this.state.pins.push({ location: { lat: newlat, lng: newlng } })
+
+        this.calculateAndDisplayRoutes(displayMap)
+
+        }
+    }
+
     activityIcon(workout_type){
         if (workout_type==='run' || workout_type === undefined){
             return (<i className="fas fa-running"></i>)
@@ -155,10 +189,18 @@ class WorkoutForm extends React.Component{
     }
 
     update(text) {
-        return e => this.setState({ [text]: e.currentTarget.value })
+        return e => {
+             this.setState({ [text]: e.currentTarget.value })}
     }
+    updateWorkoutType(e){
+        const input = e.target.value;
+        this.setState({ workout_type: input }, () => {
+            this.calculateAndDisplayRoutes(this.map)
+        })
+    }   
 
     render(){
+        debugger;
         let pace
         if ((parseInt(this.state.duration) / 60) === 0){
             pace = '0.0'
@@ -177,16 +219,14 @@ class WorkoutForm extends React.Component{
                     <h1 id="routeHeader">Workout Stats</h1>
                     <label id="workoutSelect" >Workout Type
                     <br></br>
-                    <select onChange={this.update('workout_type')} value={this.state.workout_type}>
+                    <select onChange={this.updateWorkoutType} value={this.state.workout_type}>
                         <option value="run">Run</option>
                         <option value="swim">Swim</option>
                         <option value="cycling">Cycling</option>
                     </select>
+                    <h1>{this.state.workout_type}</h1>
+                    {/* <button type='button' onClick={this.update('workout_type') value='cycling'}>Cycling</button> */}
                     <div id='activityIcon'>{this.activityIcon(this.state.workout_type)}</div>
-                    </label>
-                    <br></br>
-                    <label id="durationInput">Duration
-                    <input id="durationTextInput" type='text' onChange={this.update('duration')} value={this.state.duration}></input>
                     </label>
                     <br></br>
                     {/* <label>Elevation Change
@@ -198,11 +238,14 @@ class WorkoutForm extends React.Component{
                     </label> */}
                     <br></br>
                     <button id="submitWorkout" value='submit'>Submit</button>
+                    <button id='loop' type='button' onClick={() => this.loopRoute()}>Loop Route</button>
+
                     </div>
                     <div id='map'>
                         MAP
                     </div>
                 </form>
+
                 <div id="bottombar">
                     <div id="showDistance">
                         <div id="distanceText">
@@ -214,10 +257,10 @@ class WorkoutForm extends React.Component{
                     </div>
                     <div id="estMovingTime">
                         <div id="estText">
-                            Pace
+                            Est. Time
                         </div>
                         <div id="estDisplay">
-                            {pace} mph
+                            {this.state.estTime}
                         </div>
                     </div>
                     <div id="climb">

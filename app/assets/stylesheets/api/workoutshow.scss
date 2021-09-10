@@ -1,13 +1,83 @@
 #showmap{
-    height: 500px;
-    width: 600px;
+    height: 100%;
+    width: 100%;
+    border-top: 1px solid rgb(180, 180, 180);
+    border-bottom: 1px solid rgb(180, 180, 180);
+
 }
 
 
 #showWorkout{
+    display:flex;
     position: absolute;
-    top: 40%;
-    left: 50%;
+    flex-direction: column;
+    width: 80%;
+    height: 900px;
+    left: 10%;
+    top: 10%;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
+    border: 1px solid rgb(180, 180, 180)
+}
+
+#showWorkoutState{
+    display:flex
+}
+
+#eleChart{
+    // height: 10%;
+    width: 100%;
+}
+
+#titleBox{
+    height: 40px;
+    border-bottom: 1px solid rgb(196, 196, 196);
+    background: rgb(238, 238, 238);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#titleBox h1{
+    margin-left: 5%;
+    letter-spacing: .8px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#box{
+    display: flex;
+}
+
+#boxright{
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+#boxleft{
+    width: 50%;
+    border-right: 1px solid rgb(202, 202, 202)
+}
+
+#topBoxRight{
+    display:flex;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    justify-content: space-between;
+    padding: 8px;
+    margin: 15px;
+}
+
+#titleBox a{
+    background-color: orangered;
+    color: white;
+    outline: none;
+    letter-spacing: 1px;
+    height: 30%;
+    border: none;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 10px;
+    margin-right: 5%
 }

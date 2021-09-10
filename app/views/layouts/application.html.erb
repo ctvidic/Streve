@@ -14,11 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <%# <script type="text/javascript">
-      window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
-    <%# </script> %> 
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
   <body>
