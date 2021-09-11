@@ -1,18 +1,94 @@
 
 
 #biglinks{
-    position: relative;
-    top: 40px; left: 40px;
-    font-family: 'Roboto', sans-serif;
-    top: 50px;
-    margin-left: 200px;
+    // position: relative;
+    // top: 40px; left: 40px;
+    // font-family: 'Roboto', sans-serif;
+    // top: 50px;
+    // margin-left: 200px;
 }
 
 #biglinks a{
-    position: relative;
-    top: 40px; left: 40px;
-    font-family: 'Roboto', sans-serif;
-    top: 50px;
-    margin-left: 200px;
+    // position: relative;
+    // top: 40px; left: 40px;
+    // font-family: 'Roboto', sans-serif;
+    // top: 50px;
+    // margin-left: 200px;
 }
 
+#profPhoto {
+    margin-top: 10%;
+    height: 150px;
+    width: 150px;
+    color: rgb(75, 75, 75);
+}
+
+#mainfeed {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    border: 1px solid black;
+    margin-left: 10%;
+    height: 100%;
+}
+
+#profusername {
+    font-size:30px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#bottomScroll{
+    display:flex;
+}
+
+#stats{
+    width: 30%;
+    border: 1px solid gray;
+}
+
+#biglinks{
+    width:70%
+}
+
+#workoutCreator{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+#smallworkouttitle{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+#smallWorkoutcreatedAt{
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    color: rgb(172, 172, 172)
+}
+
+#smallWorkout{
+    margin-top: 20px;
+    margin-left: 10px;
+    // border: 1px solid gray;
+    box-shadow: 0px 0 5px #e5e2e2;
+
+}
+
+#staticMapImage img{
+   width: 100%;
+   height: auto;
+   left: 0px;
+   right: 0px;
+}
+
+#staticMapImage{
+     display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+}

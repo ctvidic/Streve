@@ -94,6 +94,13 @@ class ShowWorkout extends React.Component{
     convertPace(duration, distance){
         return parseInt(duration/distance)
     }
+
+    removeWorkout(){
+        if (this.props.workout.user_id === this.props.sessionId){
+        return(
+        <NavLink to={`/users/${this.props.sessionId}`}
+            onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>)}
+    }
     render() {
         let eleData
         let pace = this.convertPace(this.props.workout.duration, this.props.workout.distance)
@@ -110,27 +117,26 @@ class ShowWorkout extends React.Component{
         }else{
             username = ""
         }
+        debugger;
         return(<div id="showWorkout">
             <div id="showWorkoutstats">
             <div id="titleBox">
-                    <h1>{username} - {this.props.workout.workout_type}</h1>
-                    <NavLink to={`/users/${this.props.sessionId}`}
-                            onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>
+                    <h1>{this.props.workout.title}</h1>
+                    {this.removeWorkout()}                    
             </div>
             <div id="box">
             <div id="boxleft">
-
+                <div id="workoutdesc">{this.props.workout.description}</div>
             </div>
             <div id="boxright">
             {/* <li>Type:{this.props.workout.workout_type}</li> */}
             <div id="topBoxRight">
-            <h1>Duration: {newTime}</h1>
-            <h1>Pace: {pace} mins/mi</h1>
             <h1>Distance: {this.props.workout.distance} mi </h1>
+            <h1>Elevation Gain: {this.props.workout.elevation_change} ft </h1>
             </div>
             <div id="topBoxRight">
             <h1>Created At: {this.props.workout.created_at} </h1>
-            <h1>Elevation Gain: {this.props.workout.elevation_change} ft </h1>
+            <h1>Created By: {username}</h1>
             </div>
            
             </div>

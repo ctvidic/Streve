@@ -138,3 +138,40 @@ i {
     height: 30px;
 }
 
+#activityIcon {
+    width: 200px;
+    height: 100%;
+    border: 1px solid rgb(230, 224, 224);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#workoutSelect{
+    width: 80%;
+    height: 20px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    height: 40px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 3px;
+    border: 1px solid gray
+}
+
+#workoutFormDesc{
+    width: 80%;
+    height: 10%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#titleinput{
+    width: 80%;
+    height: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#workoutform svg{
+    height: 80%;
+    width: 80%
+}
