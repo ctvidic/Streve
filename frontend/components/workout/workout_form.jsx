@@ -55,7 +55,7 @@ class WorkoutForm extends React.Component{
         }
         // this.state.workout
         this.props.createWorkout(submit).then(() => {
-          this.props.history.push(`../users/${this.props.user_id}`)
+          this.props.history.push(`./users/${this.props.user_id}`)
         })
     }
 
