@@ -7,7 +7,7 @@ end
 def create
     @workout = Workout.new(workout_params)
     if @workout.save
-      render :show
+      # render :show
     else
       render json: @workout.errors.full_messages, status: 422
     end
