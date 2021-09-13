@@ -6,7 +6,7 @@ export const fetchActivities = () => (
     })
 );
 
-export const fetchActivitie = id => (
+export const fetchActivity = id => (
     $.ajax({
         method: 'GET',
         url: `api/activities/${id}`
