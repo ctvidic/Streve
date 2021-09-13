@@ -86,6 +86,7 @@ class WorkoutForm extends React.Component{
         // // for(let i =0; i<newPoints.length; i++){
         // //     newString += newPoints[i][0] +','+newPoints[i][1] + ' | '
         // // }
+        // // debugger
         return newPoints
     }
 
