@@ -8,6 +8,8 @@ import WorkoutFormContainer from './workout/workout_form_container'
 import ShowWorkoutContainer from './workout/show_workout_container'
 import SplashContainer from './splash/splash_container'
 import ActivityFormContainer from './activity/activity_form_container'
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import DashboardContainer from './dashboard/dashboard_container'
 
 const App = () => (
     <div id='webpage'>
@@ -18,13 +20,14 @@ const App = () => (
             <GreetingContainer />
         </header>
         <Switch>
-            <Route exact path="/login" component={LogInFormContainer} />
-            <Route exact path="/signup" component={SignUpFormContainer} />
-            <Route exact path="/users/:id" component={UserShowContainer}/>
-            <Route exact path="/workouts/new" component={WorkoutFormContainer}/>
-            <Route exact path="/activities/new" component={ActivityFormContainer} />
-            <Route exact path="/workouts/:id" component={ShowWorkoutContainer} />
-            <Route exact path="/" component={SplashContainer} />
+            <AuthRoute exact path="/login" component={LogInFormContainer} />
+            <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+            <ProtectedRoute exact path="/users/:id" component={UserShowContainer}/>
+            <ProtectedRoute exact path="/workouts/new" component={WorkoutFormContainer}/>
+            <ProtectedRoute exact path="/activities/new" component={ActivityFormContainer} />
+            <ProtectedRoute exact path="/workouts/:id" component={ShowWorkoutContainer} />
+            <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
+            <AuthRoute exact path="/" component={SplashContainer} />
         </Switch>
     </div>
 );

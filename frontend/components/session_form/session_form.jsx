@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
     console.log('demologin');
     const player = { username: 'newuser',email: 'blahblahblah@gmail.com', password: 'password'}
     this.props.demoUserLogin(player).then(()=>{
-    this.props.history.push(`./users/${this.props.userId}`)})
+    this.props.history.push(`./dashboard`)})
   }
 
   render() {
