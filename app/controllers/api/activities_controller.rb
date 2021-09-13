@@ -1,4 +1,3 @@
-require 'byebug'
 
 class Api::WorkoutsController < ApplicationController
 def new
@@ -23,7 +22,7 @@ def index
 end
 
 def destroy
-    @actitivity = Activity.find(params[:id])
+    @activity = Activity.find(params[:id])
     if @activity.destroy
       render :show
     else
