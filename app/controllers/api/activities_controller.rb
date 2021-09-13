@@ -1,5 +1,5 @@
 
-class Api::WorkoutsController < ApplicationController
+class Api::ActivitiesController < ApplicationController
 def new
     render :new
 end
