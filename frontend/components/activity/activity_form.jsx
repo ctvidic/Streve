@@ -7,7 +7,7 @@ class ActivityForm extends React.Component{
     }
 
     render(){
-        return(<div id="activityFormDiv">aOn activity show page</div>)
+        return(<div id="activityFormDiv">aaOn activity show page</div>)
     }
 }
 
