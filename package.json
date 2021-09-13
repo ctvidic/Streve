@@ -43,7 +43,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "think": "0.0.2",
-    "webpack": "^5.52.0",
+    "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0"
   }
 }

@@ -28,7 +28,9 @@ class WorkoutForm extends React.Component{
             workout_type: 'run',
             title: '',
             description: '',
-            static_map: ''
+            static_map: '',
+            on_road: true,
+            polypath: new google.maps.Polyline()
         }
         this.origin=''
         this.addPin= this.addPin.bind(this);
@@ -52,7 +54,6 @@ class WorkoutForm extends React.Component{
             static_map: this.state.static_map
         }
         // this.state.workout
-        debugger;
         this.props.createWorkout(submit).then(() => {
           this.props.history.push(`../users/${this.props.user_id}`)
         })
@@ -107,12 +108,13 @@ class WorkoutForm extends React.Component{
             let estTime
             let static_map
             if (this.state.pins.length > 1){
-            this.state.directionsRenderer.setMap(map);
+                this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
             let elePoints = this.convPoints(waypoints);
             let origin = waypoints.shift().location;
             let destination = waypoints.pop().location;
             let newwaypoints = waypoints.map(pin => ({location: pin, stopover: false}))
+            if (this.state.on_road === true){
             this.state.directionsService.route({
                 origin: origin,
                 destination: destination,
@@ -133,7 +135,60 @@ class WorkoutForm extends React.Component{
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
-            });
+            });}
+
+                // this.setState({polypath: new google.maps.Polyline({
+                //     path: elePoints,
+                //     geodesic: true,
+                //     strokeColor: "#FF0000",
+                //     strokeOpacity: 1.0,
+                //     strokeWeight: 2,
+                // })
+                // })
+                this.setState({
+                    polypath: new google.maps.Polyline({
+                        path: elePoints,
+                        geodesic: true,
+                        strokeColor: "#FF0000",
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2,
+                    })
+                })
+            if (this.state.on_road){ 
+                // let testPoints = new google.maps.LatLng(-34, 151);
+                // this.setState({
+                //     polypath: new google.maps.Polyline({
+                //         path: testPoints,
+                //         geodesic: true,
+                //         strokeColor: "#FF0000",
+                //         strokeOpacity: 1.0,
+                //         strokeWeight: 2,
+                //     })
+                // })
+                // this.setState({
+                //     polypath: new google.maps.Polyline({
+                //         path: [lat: '',lng: ''],
+                //         geodesic: true,
+                //         strokeColor: "#FF0000",
+                //         strokeOpacity: 1.0,
+                //         strokeWeight: 2,
+                //     })
+                // })
+                // polypath.setVisible(false)
+                // polypath.setMap(this.map);
+                debugger;
+                this.state.polypath.setMap(null);
+
+                // this.state.polypath.setMap(null);
+            }else{
+                debugger;
+                
+                this.state.polypath.setMap(this.map);
+                this.state.directionsRenderer.setMap(null);
+
+                // this.setState({directionsRenderer: null})
+                // this.state.directionsRenderer = null;
+            }
             this.state.elevationService.getElevationAlongPath({
                 path: elePoints,
                 samples: 256
@@ -151,7 +206,20 @@ class WorkoutForm extends React.Component{
             // this.updatePins();
             // this.setState({workout_type: 'run'})
     }
+    changeRoads(){
+        this.calculateAndDisplayRoutes(this.map)
+        if (this.state.on_road){    
+            this.setState({ on_road: false }, () => {
+                this.calculateAndDisplayRoutes(this.map)
+            })
+        }else{
+            this.setState({ on_road: true }, () => {
+                this.state.polypath.setMap(null);
 
+                this.calculateAndDisplayRoutes(this.map)
+            })
+        }
+    }
     addPin(location, map){
         let visibleValue = true
         if (this.state.pins.length > 0){
@@ -248,6 +316,7 @@ class WorkoutForm extends React.Component{
                     {/* <label>Distance
                         <input type='text' onChange={this.update('distance')} value={this.state.distance}></input>
                     </label> */}
+                    <button id="changeRoads" type='button'  onClick={() => this.changeRoads()}>Change Roads</button>
                     <button id="submitWorkout" value='submit'>Submit Route</button>
                     <button id='loop' type='button' onClick={() => this.loopRoute()}>Loop Route</button>
 
