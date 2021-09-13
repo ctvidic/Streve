@@ -33,7 +33,7 @@ end
 protected
 
 def workout_params
-    params.require(:acitivity).permit(:user_id,:route_id, :duration,:date)
+    params.require(:activity).permit(:user_id,:route_id, :duration,:date)
 end
 
 
