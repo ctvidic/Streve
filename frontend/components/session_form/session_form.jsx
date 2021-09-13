@@ -49,7 +49,6 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    debugger;
     let errors
     let value
     if(this.props.formType === 'Log In'){

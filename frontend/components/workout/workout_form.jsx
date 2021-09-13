@@ -86,7 +86,6 @@ class WorkoutForm extends React.Component{
         // // for(let i =0; i<newPoints.length; i++){
         // //     newString += newPoints[i][0] +','+newPoints[i][1] + ' | '
         // // }
-        // // debugger
         return newPoints
     }
 
@@ -176,12 +175,10 @@ class WorkoutForm extends React.Component{
                 // })
                 // polypath.setVisible(false)
                 // polypath.setMap(this.map);
-                debugger;
                 this.state.polypath.setMap(null);
 
                 // this.state.polypath.setMap(null);
             }else{
-                debugger;
                 
                 this.state.polypath.setMap(this.map);
                 this.state.directionsRenderer.setMap(null);

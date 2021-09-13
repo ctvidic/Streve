@@ -117,7 +117,6 @@ class ShowWorkout extends React.Component{
         }else{
             username = ""
         }
-        debugger;
         return(<div id="showWorkout">
             <div id="showWorkoutstats">
             <div id="titleBox">
