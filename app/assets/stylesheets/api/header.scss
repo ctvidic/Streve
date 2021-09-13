@@ -38,18 +38,22 @@ body{
 
 #plusDropDown svg{
     height: 35px;
-    width: 35 px;  
+    width: 35px;  
     position:fixed;
     z-index: 5; 
     top: 3px;
-    padding: 5px;
-    padding-right: 12px;
-    padding-left: 12px;
-    left: 90%;
+    padding-top: 5px;
+    // padding-right: 12px;
+    // padding-left: 12px;
+    left: 88%;
     font-family: 'Roboto', sans-serif;
     border-radius: 3px;
     color: rgb(253, 110, 57);
-    z-index: 100;
+    z-index: 105;
+}
+
+#plusDropDown svg:hover{
+    color: rgb(211, 92, 49);
 }
 
 .dropdown button{
@@ -63,8 +67,50 @@ body{
 
 }
 
-
+#showmenu{
+    left: 90%;
+    top: 30px;
+    z-index:200;
+    width: 50%;
+    height: 50%;
+}
 
 header{
     z-index: 100;
+}
+
+
+
+#CreateDropdown{
+    background-color: rgb(240, 240, 240);
+    position: fixed;
+    padding: 10px;
+    top: 42px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 3px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(179, 177, 177);
+    z-index: 104;
+    left: 88%;
+}
+
+#CreateDropdown a{
+    padding: 20px;
+    font-size: 15px;
+}
+#CreateDropdown a:hover{
+    padding: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#svgSelect svg{
+    background-color: rgb(240, 240, 240);
+    z-index: 110;
+    border-left: 1px solid rgb(179, 177, 177);
+    border-right: 1px solid rgb(179, 177, 177);
+    border-radius: 0px;
 }

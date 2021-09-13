@@ -10,9 +10,35 @@
     font-family: 'Roboto', sans-serif;
 
 }
-
-.login-signup a{
+#signupLink{
     position:fixed;
+    z-index: 5; 
+    top: 10px;
+    padding: 5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    left: 80%;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 3px;
+    z-index: 100;
+}
+#loginLink{
+    position:fixed;
+    z-index: 5; 
+    top: 10px;
+    padding: 5px;
+    padding-right: 12px;
+    padding-left: 12px;
+    left: 80%;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 3px;
+    z-index: 100;
+}
+
+#loginClick{
+     position:fixed;
     z-index: 5; 
     top: 10px;
     padding: 5px;
