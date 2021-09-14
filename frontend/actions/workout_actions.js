@@ -38,6 +38,13 @@ export const createWorkout = workout => dispatch => (
     ))
 );
 
+
+export const editWorkout = workout => dispatch => (
+    APIUtil.editWorkout(workout).then(workout => (
+        dispatch(receiveWorkout(workout))
+    ))
+)
+
 export const deleteWorkout = workout => dispatch => (
     APIUtil.deleteWorkout(workout).then(workout=> (dispatch(removeWorkout(workout.id))))
 )

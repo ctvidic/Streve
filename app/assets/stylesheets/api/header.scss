@@ -45,11 +45,13 @@ body{
     padding-top: 5px;
     // padding-right: 12px;
     // padding-left: 12px;
-    left: 88%;
+    right: 100px;
     font-family: 'Roboto', sans-serif;
-    border-radius: 3px;
     color: rgb(253, 110, 57);
     z-index: 105;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    padding-right:1px;
 }
 
 #plusDropDown svg:hover{
@@ -62,9 +64,8 @@ body{
     position:fixed;
     z-index: 5; 
     // padding: 5px;
-    left: 90%;
+    right: 100px;
     top: 20px;
-
 }
 
 #showmenu{
@@ -80,14 +81,13 @@ header{
 }
 
 
-
 #CreateDropdown{
     background-color: rgb(240, 240, 240);
     position: fixed;
-    padding: 10px;
-    top: 42px;
+    // padding: 10px;
+    top: 50px;
     font-family: 'Roboto', sans-serif;
-    border-radius: 3px;
+    // border-radius: 3px;
     z-index: 100;
     display: flex;
     flex-direction: column;
@@ -95,22 +95,28 @@ header{
     align-items: center;
     border: 1px solid rgb(179, 177, 177);
     z-index: 104;
-    left: 88%;
+    right: 100px;
+    padding: 10px;
 }
 
 #CreateDropdown a{
-    padding: 20px;
+    padding: 5px;
     font-size: 15px;
+
 }
 #CreateDropdown a:hover{
-    padding: 20px;
+    padding: 5px;
     font-size: 15px;
     font-weight: bold;
 }
+
 #svgSelect svg{
     background-color: rgb(240, 240, 240);
     z-index: 110;
     border-left: 1px solid rgb(179, 177, 177);
     border-right: 1px solid rgb(179, 177, 177);
     border-radius: 0px;
+}
+#plusDropdown {
+    margin : 1px;
 }

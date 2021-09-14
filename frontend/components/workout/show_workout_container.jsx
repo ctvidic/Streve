@@ -6,7 +6,8 @@ const mSTP = (state, ownProps) => {
     return ({
         workout: state.entities.workouts[ownProps.match.params.id] || {},
         sessionId: state.session.id,
-        username: state.entities.users
+        username: state.entities.users,
+        workoutId: ownProps.match.params.id
     })
 }
 

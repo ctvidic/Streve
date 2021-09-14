@@ -28,3 +28,12 @@ export const deleteWorkout = workout => (
     })
 );
 
+export const editWorkout = workout => (
+    $.ajax({
+        method: 'patch',
+        url: `/api/workouts/${workout.id}`,
+        data:{ workout }
+    })
+);
+
+

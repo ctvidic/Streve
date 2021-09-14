@@ -55,6 +55,9 @@ class ShowWorkout extends React.Component{
         return finalArr
     }
     calculateCoords(coords){
+        debugger;
+        this.props.workout.coordinates = this.props.workout.coordinates.split('X').map(val => parseFloat(val)).slice(0,-1)
+        debugger;
         this.state.directionsRenderer.setMap(this.map);
         let origin = this.findOrigin(this.props.workout.coordinates)
         let destination = this.findDestination(this.props.workout.coordinates)
@@ -97,10 +100,12 @@ class ShowWorkout extends React.Component{
 
     removeWorkout(){
         if (this.props.workout.user_id === this.props.sessionId){
-        return(
+        return(<div id="editDeleteLinks">
         <NavLink to={`/users/${this.props.sessionId}`}
-            onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>)}
-    }
+                onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>
+            <NavLink to={`/workouts/${this.props.workoutId}/edit`}>Edit Workout</NavLink></div>)
+            }
+        }
     render() {
         let eleData
         let pace = this.convertPace(this.props.workout.duration, this.props.workout.distance)

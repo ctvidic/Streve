@@ -48,7 +48,6 @@ class Greeting extends React.Component{
   const showMenu = () => {
     if(!this.state.show){
       this.setState({show: true})
-      console.log('its true')
       return (
         <div id='showmenu'>Show Menufasdfasasdfsdf</div>
       )
@@ -80,7 +79,7 @@ class Greeting extends React.Component{
 
         </Dropdown.Menu>
       </Dropdown> */}
-      <div id="plusDropDown" onClick={() => (showMenu())}><Plus clicked={this.state.show}/></div>
+      <div id="plusDropDown" onMouseLeave={() => (showMenu())} onMouseEnter={() => (showMenu())}><Plus clicked={this.state.show}/></div>
     </div>
   );
   if (this.props.currentUser) {

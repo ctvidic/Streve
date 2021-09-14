@@ -79,7 +79,14 @@
     border-radius: 3px;
     font-size: 12px;
     padding: 10px;
-    margin-right: 5%
+    margin: 5px;
+    
+}
+
+#editDeleteLinks{
+    margin-right: 5%;
+    display: flex;
+    align-items: center
 }
 
 #workoutdesc{

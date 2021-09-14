@@ -10,6 +10,7 @@ import SplashContainer from './splash/splash_container'
 import ActivityFormContainer from './activity/activity_form_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import DashboardContainer from './dashboard/dashboard_container'
+import EditWorkoutContainer from './workout/edit_workout_container'
 
 const App = () => (
     <div id='webpage'>
@@ -26,6 +27,7 @@ const App = () => (
             <ProtectedRoute exact path="/workouts/new" component={WorkoutFormContainer}/>
             <ProtectedRoute exact path="/activities/new" component={ActivityFormContainer} />
             <ProtectedRoute exact path="/workouts/:id" component={ShowWorkoutContainer} />
+            <ProtectedRoute exact path="/workouts/:id/edit" component={EditWorkoutContainer} />
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
             <AuthRoute exact path="/" component={SplashContainer} />
         </Switch>
