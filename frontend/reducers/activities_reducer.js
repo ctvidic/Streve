@@ -1,6 +1,6 @@
 import { RECEIVE_ACTIVITIES, RECEIVE_ACTIVITY } from "../actions/activity_actions";
 
-const workoutsReducer = (state = {}, action) => {
+const activitiesReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState
     switch (action.type) {
@@ -15,4 +15,4 @@ const workoutsReducer = (state = {}, action) => {
     }
 };
 
-export default workoutsReducer
+export default activitiesReducer

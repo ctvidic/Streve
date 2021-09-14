@@ -40,7 +40,9 @@ class EditWorkout extends React.Component {
         this.removeLastPoint = this.removeLastPoint.bind(this)
 
     }
-    submitForm() {
+    submitForm(e) {
+        e.preventDefault();
+
         let pinEdit = this.state.pins.map(pin => [pin.location.lat, pin.location.lng])
         let newPinEdit = Array.prototype.concat.apply([], pinEdit);
         let inputEle = this.state.eleArr.map(ele => parseInt(ele))
@@ -289,7 +291,7 @@ class EditWorkout extends React.Component {
         }
         return (
             <div id="workoutform">
-                <form onSubmit={() => this.submitForm()} id='mapForm'>
+                <form onSubmit={(e) => this.submitForm(e)} id='mapForm'>
                     <div id="mapInput">
                         {/* <label>Choose a route
                         <input type='text' onChange={this.update('route_id')} value={this.state.route_id}></input>

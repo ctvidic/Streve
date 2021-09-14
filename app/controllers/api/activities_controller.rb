@@ -9,7 +9,7 @@ def create
     if @activity.save
       render :show
     else
-      render json: @workout.errors.full_messages, status: 422
+      render json: @activity.errors.full_messages, status: 422
     end
 end
 
@@ -18,7 +18,7 @@ def show
 end
 
 def index
-    @activity = Activity.all
+    @activities = Activity.all
 end
 
 def destroy
@@ -32,8 +32,8 @@ end
 
 protected
 
-def workout_params
-    params.require(:activity).permit(:user_id,:route_id, :duration,:date)
+def activity_params
+    params.require(:activity).permit(:user_id,:workout_id, :duration,:date, :description,:title)
 end
 
 

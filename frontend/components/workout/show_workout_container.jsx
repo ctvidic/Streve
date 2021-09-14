@@ -16,7 +16,7 @@ const mDTP = (dispatch) => {
         fetchWorkouts: () => dispatch(fetchWorkouts()),
         fetchWorkout: (workoutOut) => dispatch(fetchWorkout(workoutOut)),
         removeWorkout: (workout) => dispatch(deleteWorkout(workout)),
-        fetchUser: (userId) => dispatch(fetchUser(userId))
+        fetchUser: (userId) => dispatch(fetchUser(userId)),
     })
 }
 

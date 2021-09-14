@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import Chart from "react-google-charts";
+import AreaChart from "react-google-charts";
 
 class ShowWorkout extends React.Component{
     constructor(props){
@@ -149,7 +149,7 @@ class ShowWorkout extends React.Component{
             <div id='showmap'>
             </div>
             <div id='eleChart'>
-                <Chart
+                <AreaChart
                     chartType="LineChart"
                     loader={<div>Loading Elevation Chart</div>}
                     data={eleData}

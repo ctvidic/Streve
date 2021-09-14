@@ -35,7 +35,6 @@
 
 #profusername {
     margin-left: 1%;
-
     font-size:30px;
     font-weight: bold;
     padding-top: 20px;
@@ -94,9 +93,14 @@
 }
 
 #staticMapImage{
-     display: flex;
+    display: flex;
     justify-content: center;
     width: 90%;
     margin-left: 5%;
     margin-top: 3%;
+}
+
+#topStats{
+    display:flex;
+    flex-direction: column;
 }
