@@ -37,6 +37,7 @@ class WorkoutForm extends React.Component{
         this.calculateAndDisplayRoutes = this.calculateAndDisplayRoutes.bind(this)
         this.updateWorkoutType = this.updateWorkoutType.bind(this)
         this.removeLastPoint = this.removeLastPoint.bind(this)
+        this.reloadMap = this.reloadMap.bind(this)
         
     }
     submitForm(e){
@@ -50,7 +51,6 @@ class WorkoutForm extends React.Component{
         }
         let newDistance = this.state.distance;
         newDistance = newDistance.replace(/[^0-9]/g, '');
-        debugger;
         // let pinSplit = pinText.split('X').map(val => parseFloat(val))
         let submit= {user_id: this.state.workout.user_id, 
             route_id: parseInt(this.state.route_id) || null,
@@ -85,6 +85,8 @@ class WorkoutForm extends React.Component{
         const onChangeHandler = function () {
             calculateAndDisplayRoute(directionsService, directionsRenderer);
         };
+
+        this.polypath = {}
         
         google.maps.event.addListener(this.map, "click", (event) => {
             this.addPin(event.latLng, this.map)
@@ -115,6 +117,7 @@ class WorkoutForm extends React.Component{
         return [Math.floor(climb),Math.floor(descent)]
     }
     calculateAndDisplayRoutes(map) {
+            
             let distance;
             let pace;
             let estTime
@@ -154,8 +157,7 @@ class WorkoutForm extends React.Component{
                 }
             });}
 
-    
-                let polypath= new google.maps.Polyline({
+                var polypath= new google.maps.Polyline({
                             path: elePoints,
                             geodesic: true,
                             strokeColor: "#FF0000",
@@ -163,7 +165,6 @@ class WorkoutForm extends React.Component{
                             strokeWeight: 2,
                 })
                 if (this.state.on_road){ 
-
                     polypath.setMap(null);
                 }else{
                     polypath.setMap(this.map);
@@ -186,6 +187,19 @@ class WorkoutForm extends React.Component{
             // this.updatePins();
             // this.setState({workout_type: 'run'})
     }
+    reloadMap(){
+        const mapOptions = {
+            center: { lat: 40.7128, lng: -74.0060 },
+            zoom: 12,
+            mapId: "2635966e05b3c0d6",
+            disableDefaultUI: true,
+            zoomControl: true,
+        }
+        this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        google.maps.event.addListener(this.map, "click", (event) => {
+            this.addPin(event.latLng, this.map)
+        });
+    }
     changeRoads(){
         this.calculateAndDisplayRoutes(this.map)
         if (this.state.on_road){    
@@ -194,6 +208,7 @@ class WorkoutForm extends React.Component{
             })
         }else{
             this.setState({ on_road: true }, () => {
+                this.reloadMap()
                 this.calculateAndDisplayRoutes(this.map)
             })
         }
@@ -267,7 +282,9 @@ class WorkoutForm extends React.Component{
                 this.state.directionsRenderer.setMap(null);
                 this.calculateAndDisplayRoutes(this.map)
             });
-
+            if (!this.state.on_road){
+                this.reloadMap()
+            }
         }
     }
     render(){   
@@ -307,7 +324,7 @@ class WorkoutForm extends React.Component{
                     {/* <label>Distance
                         <input type='text' onChange={this.update('distance')} value={this.state.distance}></input>
                     </label> */}
-                    <button id="changeRoads" type='button'  onClick={() => this.changeRoads()}>Change Roads</button>
+                    {/* <button id="changeRoads" type='button'  onClick={() => this.changeRoads()}>Change Roads</button> */}
                     <button id="submitWorkout" value='submit'>Submit Route</button>
                     <button id='loop' type='button' onClick={() => this.loopRoute()}>Loop Route</button>
                     <button id='removePoint' type='button' onClick={() => this.removeLastPoint()}>Remove Last Point</button>

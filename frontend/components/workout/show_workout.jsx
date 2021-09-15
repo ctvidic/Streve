@@ -55,9 +55,7 @@ class ShowWorkout extends React.Component{
         return finalArr
     }
     calculateCoords(coords){
-        debugger;
         this.props.workout.coordinates = this.props.workout.coordinates.split('X').map(val => parseFloat(val)).slice(0,-1)
-        debugger;
         this.state.directionsRenderer.setMap(this.map);
         let origin = this.findOrigin(this.props.workout.coordinates)
         let destination = this.findDestination(this.props.workout.coordinates)

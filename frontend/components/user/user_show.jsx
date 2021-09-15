@@ -125,7 +125,6 @@ class UserShow extends React.Component{
                     src={`https://maps.googleapis.com/maps/api/staticmap?size=1200x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.props.workouts[activity.workout_id].static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
         </div>
         </div>))}
-        <NavLink to="/workouts/new"> Create New Workout </NavLink>
         </div>
         <div id="stats">
             <h1>User Stats</h1>

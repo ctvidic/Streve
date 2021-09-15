@@ -46,6 +46,14 @@ class Dashboard extends React.Component{
             )
         }
     }
+
+    distance(distance){
+        if (distance){
+            return distance.distance
+        }else{
+            return ""
+        }
+    }
     render(){
         return(<div id="dashboardContainer">
             <div id="userProf">
@@ -70,11 +78,11 @@ class Dashboard extends React.Component{
                             <div id="activityStats">
                                 <div id="distanceStat">
                                     <div id="distanceStatText">Distance: </div>
-                                    <div id="distanceValueStat">{this.props.workouts[activity.workout_id].distance} mi</div>
+                                    <div id="distanceValueStat">{this.distance(this.props.workouts[activity.workout_id])} mi</div>
                                 </div>
                                 <div id="paceStat">
                                     <div id="paceStatText">Pace: </div>
-                                    <div id="paceValueStat">{this.pace(this.props.workouts[activity.workout_id].distance, this.props.workouts[activity.workout_id].workout_type, activity.duration)}</div>
+                                    <div id="paceValueStat">{this.pace(this.distance(this.props.workouts[activity.workout_id]), this.props.workouts[activity.workout_id].workout_type, activity.duration)}</div>
                                 </div>
                                 <div id="durationStat">
                                     <div id="durationStatText">Duration: </div>
