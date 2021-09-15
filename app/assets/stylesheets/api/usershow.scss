@@ -27,7 +27,7 @@
 #mainfeed {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 900px;
     height: 100%;
     margin-left: 10%;
     height: 100%;
@@ -53,22 +53,37 @@
 }
 
 #stats{
-    width: 30%;
+    width: 300px;
     border: 1px solid gray;
 }
 
 #biglinks{
-    width:70%
+    width:800px;
+    margin-right: 20px;
 }
 
 #workoutCreator{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
+    padding: 5px;
+}
+
+#smallworkouttitle a{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    padding: 5px;
+    padding-top:20px;
+    text-decoration:none; 
+    color: black;
+    padding-bottom: 20px;
+}
+
+#smallworkouttitle a:hover{
+    color: #007FB6
 }
 
 #smallworkouttitle{
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    padding-bottom: 20px;
 }
 
 #smallWorkoutcreatedAt{
@@ -87,20 +102,91 @@
 
 #staticMapImage img{
    width: 100%;
-   height: auto;
+   height: 300px;
    left: 0px;
    right: 0px;
+   margin-left: 10px;
 }
 
 #staticMapImage{
     display: flex;
     justify-content: center;
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 3%;
+    align-items: center;
+    width: 600px;
+    margin: 10px;
+    padding: 10px;
+    margin-top: 0px;
 }
 
 #topStats{
     display:flex;
     flex-direction: column;
+    margin: 10px;
+    flex-direction: column;
+}
+
+#activityStats{
+    display: flex;
+    flex-direction: row;
+}
+
+#distanceStat{
+    display:flex;
+    flex-direction: column;
+    padding: 5px;
+    padding-top: 10px;
+}
+
+#distanceStat div{
+    font-family: 'Roboto', sans-serif;
+    font-weight:lighter;
+}
+
+#distanceValueStat{
+    font-size: 25px;
+}
+
+#distanceStatText{
+    padding-bottom: 5px;
+}
+
+#paceStat{
+    display:flex;
+    flex-direction: column;
+    padding: 5px;
+    padding-top: 10px;
+    padding-left:30px
+}
+#paceStat div{
+    font-family: 'Roboto', sans-serif;
+    font-weight:lighter;
+}
+
+#paceStatText{
+    padding-bottom: 5px;
+}
+
+#paceValueStat{
+     font-size: 25px;
+}
+
+#durationStat{
+    display:flex;
+    flex-direction: column;
+    padding: 5px;
+    padding-top: 10px;
+    padding-left:30px
+}
+
+#durationStat div{
+    font-family: 'Roboto', sans-serif;
+    font-weight:lighter;
+}
+
+#durationStatText{
+    padding-bottom: 5px;
+}
+
+#durationValueStat{
+     font-size: 25px;
 }

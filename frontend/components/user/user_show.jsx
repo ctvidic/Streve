@@ -21,8 +21,17 @@ class UserShow extends React.Component{
         <Redirect to="/dashboard" />
         // this.props.history.push('/api/workouts/new')
     }
-    render() {
+
+    pace(distance,workout_type,duration){
         debugger;
+
+        if (workout_type === 'run'){
+            return `${parseInt(duration/distance)} min/mi`
+        }else{
+            return `${parseInt(60*distance/duration)} mph`
+        }
+    }
+    render() {
         return (
         <div>
         <div id='mainfeed'>
@@ -37,12 +46,25 @@ class UserShow extends React.Component{
         <div id='topStats'>
         <h1 id="workoutCreator">{this.props.user.username}</h1>
         <h1 id="smallWorkoutcreatedAt">{activity.created_at}</h1>
-        </div>
-        <br></br>
         <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink></h1>
+        <div id="activityStats">
+            <div id="distanceStat">
+                <div id="distanceStatText">Distance: </div>
+                <div id="distanceValueStat">{this.props.workouts[activity.workout_id].distance} mi</div>
+            </div>
+            <div id="paceStat">
+                <div id="paceStatText">Pace: </div>
+                            <div id="paceValueStat">{this.pace(this.props.workouts[activity.workout_id].distance, this.props.workouts[activity.workout_id].workout_type,activity.duration)}</div>
+            </div>
+            <div id="durationStat">
+                <div id="durationStatText">Duration: </div>
+                <div id="durationValueStat">{activity.duration} mins</div>
+            </div>
+        </div>
+        </div>
         <div id="staticMapImage">
                 <img id="static-map"
-                    src={`https://maps.googleapis.com/maps/api/staticmap?size=700x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.props.workouts[activity.workout_id].static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
+                    src={`https://maps.googleapis.com/maps/api/staticmap?size=1200x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.props.workouts[activity.workout_id].static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
         </div>
         </div>))}
         <NavLink to="/workouts/new"> Create New Workout </NavLink>
