@@ -24,9 +24,23 @@ class UserShow extends React.Component{
     }
 
     pace(distance,workout_type,duration){
-
+        let mimin
+        mimin = duration/distance;
+        let secs = parseInt(mimin % 1 * 60)
+        let mins = (mimin - mimin % 1)
+        if (mins < 10){
+            mins =  `0${mins}`
+        }else{
+            mins = `${mins}`
+        }
+        if (secs < 10){
+            secs = `0${secs}`
+        } else {
+            secs = `${secs}`
+        }
+        debugger;
         if (workout_type === 'run'){
-            return `${parseInt(duration/distance)} min/mi`
+            return `${mins}:${secs} min/mi`
         }else{
             return `${parseInt(60*distance/duration)} mph`
         }
@@ -37,8 +51,39 @@ class UserShow extends React.Component{
             return(<button onClick={()=> this.props.deleteActivity(activity)}>Remove Activity</button>)
         }
     }
+
+    activityChart(){
+        let totalTime = 0
+        let totalElev = 0
+        let totalDist = 0
+        for(let i=0;i<this.props.activities.length;i++){
+            totalTime += this.props.activities[i].duration
+            totalElev += this.props.workouts[this.props.activities[i].workout_id].elevation_change
+            totalDist += this.props.workouts[this.props.activities[i].workout_id].distance
+        }
+        if (totalTime > 59){
+            let hrs = parseInt(totalTime / 60)
+            let mins = parseInt(totalTime % 60)
+            if (hrs > 1){
+                totalTime = `${hrs} hrs ${mins} mins`
+            }else{
+                totalTime = `${hrs} hr ${mins} mins`
+            }
+        }else{
+            totalTime = `${totalTime} mins`
+        }
+
+        return(
+            <div id="sidebarStats">
+                <div id='totalActivities'><div id="bigNumber">{this.props.activities.length}</div>
+                <div>Total Activities</div></div>
+                <div id="totaltimeStat">Activity Time: {totalTime}</div>
+                <div id="totalelevationStat">Elevation Gained: {totalElev} m</div>
+                <div id="totaldistanceStat">Distance: {totalDist} mi</div>
+            </div>
+        )
+    }
     render() {
-        debugger;
         return (
         <div>
         <div id='mainfeed'>
@@ -84,6 +129,7 @@ class UserShow extends React.Component{
         </div>
         <div id="stats">
             <h1>User Stats</h1>
+            <div>{this.activityChart()}</div>
         </div>
         </div>
         </div>
