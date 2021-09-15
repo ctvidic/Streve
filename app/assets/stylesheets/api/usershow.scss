@@ -76,6 +76,7 @@
     text-decoration:none; 
     color: black;
     padding-bottom: 20px;
+   
 }
 
 #smallworkouttitle a:hover{
@@ -83,7 +84,11 @@
 }
 
 #smallworkouttitle{
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #smallWorkoutcreatedAt{
@@ -189,4 +194,22 @@
 
 #durationValueStat{
      font-size: 25px;
+}
+
+#removeActivity button{
+   background-color: orangered;
+    color: white;
+    outline: none;
+    letter-spacing: 1px;
+    height: 30%;
+    border: none;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 10px;
+    margin: 5px;
+}
+
+#removeActivity button:hover{
+    background-color: rgb(221, 60, 2);
 }

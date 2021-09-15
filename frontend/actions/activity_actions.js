@@ -16,7 +16,7 @@ const receiveActivity = (activity) => ({
 });
 
 const removeActivity = (activityId) => ({
-    type: REMOVE_activity,
+    type: REMOVE_ACTIVITY,
     activityId,
 });
 

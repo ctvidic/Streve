@@ -21,9 +21,10 @@ export const createActivity = activity => (
     })
 );
 
-export const deleteActivity = activity => (
+export const deleteActivity = activity =>{
+    return(
     $.ajax({
         method: 'delete',
-        url: `api/activities/${activity.id}`,
+        url: `api/activities/${activity}`,
     })
-);
+)}

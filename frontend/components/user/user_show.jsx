@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 class UserShow extends React.Component{
     constructor(props) {
         super(props);
+        this.removeActivity = this.removeActivity.bind(this)
 
     }
     componentDidMount() {
@@ -23,7 +24,6 @@ class UserShow extends React.Component{
     }
 
     pace(distance,workout_type,duration){
-        debugger;
 
         if (workout_type === 'run'){
             return `${parseInt(duration/distance)} min/mi`
@@ -31,7 +31,14 @@ class UserShow extends React.Component{
             return `${parseInt(60*distance/duration)} mph`
         }
     }
+
+    removeActivity(activity){
+        if (activity.user_id === this.props.sessionId) {
+            return(<button onClick={()=> this.props.deleteActivity(activity)}>Remove Activity</button>)
+        }
+    }
     render() {
+        debugger;
         return (
         <div>
         <div id='mainfeed'>
@@ -43,10 +50,16 @@ class UserShow extends React.Component{
         <div id="bottomScroll">
         <div id="biglinks">{this.props.activities.map(activity=>(
         <div id="smallWorkout">
+        
         <div id='topStats'>
+            
         <h1 id="workoutCreator">{this.props.user.username}</h1>
         <h1 id="smallWorkoutcreatedAt">{activity.created_at}</h1>
-        <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink></h1>
+        <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink>
+                        <div id="removeActivity">
+                            {this.removeActivity(activity)}
+                        </div></h1>
+                   
         <div id="activityStats">
             <div id="distanceStat">
                 <div id="distanceStatText">Distance: </div>

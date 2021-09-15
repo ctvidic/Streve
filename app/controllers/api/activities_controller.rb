@@ -1,4 +1,4 @@
-
+require 'byebug'
 class Api::ActivitiesController < ApplicationController
 def new
     render :new

@@ -48,20 +48,23 @@ class WorkoutForm extends React.Component{
         for(let i=0; i<newPinEdit.length; i++){
             pinText+= newPinEdit[i]+'X'
         }
-        // let pinSplit = pinText.split('X').map(val => parseFloat(val))
+        let newDistance = this.state.distance;
+        newDistance = newDistance.replace(/[^0-9]/g, '');
         debugger;
+        // let pinSplit = pinText.split('X').map(val => parseFloat(val))
         let submit= {user_id: this.state.workout.user_id, 
             route_id: parseInt(this.state.route_id) || null,
             workout_type: this.state.workout_type || 'run',
             duration: parseInt(this.state.duration) || null,
             elevation_change: parseInt(this.state.climb) || null,
-            distance: parseInt(this.state.distance) || null,
+            distance: parseInt(newDistance) || null,
             coordinates: pinText,
             elevationData: inputEle,
             title: this.state.title,
             description: this.state.description,
             static_map: this.state.static_map
         }
+
         // this.state.workout
         this.props.createWorkout(submit).then(() => {
           this.props.history.push(`../users/${this.props.user_id}`)
@@ -139,7 +142,12 @@ class WorkoutForm extends React.Component{
                     } else if (this.state.workout_type === 'cycling'){
                         estTime = `${Math.ceil(calcDistance/12*60)} mins`
                     }
-                    this.setState({distance, pace, estTime, static_map})
+                    if (distance > 999){
+                        this.setState({distance: 999})
+                    }else{
+                        this.setState({distance})
+                    }
+                    this.setState({pace, estTime, static_map})
                     this.state.directionsRenderer.setDirections(response);
                 } else {
                     window.alert('Directions request failed due to ' + status);
