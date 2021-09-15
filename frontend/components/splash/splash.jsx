@@ -21,7 +21,7 @@ class Splash extends React.Component{
                     <Link to="/signup">Sign Up Today!</Link>
                 </div>
                 <div id="smalltext">
-                    By signing up for Streve, you agree to my Terms of Service. View my Privacy Policy.
+                    By signing up for Streve, you agree to my Terms of Service. View my Privacy Policy here.
                 </div>
                 </div>
             </div>
