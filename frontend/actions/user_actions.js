@@ -9,6 +9,11 @@ const receiveUser = user => ({
     user,
 });
 
+const receiveUsers = users => ({
+    type: RECEIVE_USERS,
+    users
+})
+
 
 
 export const fetchUser = userId => dispatch => (
@@ -16,3 +21,9 @@ export const fetchUser = userId => dispatch => (
         dispatch(receiveUser(user))
     ))
 );
+
+export const fetchUsers = () => dispatch => (
+    APIUtil.fetchUsers().then(users => (
+        dispatch(receiveUser(users))
+    ))
+)

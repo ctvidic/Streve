@@ -50,9 +50,24 @@
 }
 
 #userFeed{
-
     margin-top: 56px;
-    width: 60%;
+    width: 660px;
     height: 1000;
-    border: 1px solid gray
+    // border: 1px solid gray
+}
+
+#dashboardActvity{
+    margin-top: 20px;
+    margin-left: 10px;
+    // border: 1px solid gray;
+    box-shadow: 0px 0 5px #e5e2e2;
+
+}
+
+#workoutCreator a{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+   
+    text-decoration:none; 
+    color: black;
 }

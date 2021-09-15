@@ -25,9 +25,9 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-#   def index
-#     @users = User.all
-#   end
+  def index
+    @users = User.all
+  end
   
 #   def destroy
 #     @user = selected_user

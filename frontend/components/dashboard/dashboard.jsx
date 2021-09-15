@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -7,9 +8,45 @@ class Dashboard extends React.Component{
     constructor(props){
         super(props)
     }
+    
+    componentDidMount(){
+        this.props.fetchWorkouts().then((workouts) => { this.props.fetchActivities() })
+        this.props.fetchUsers()
+    }
 
+    pace(distance, workout_type, duration) {
+        let mimin
+        mimin = duration / distance;
+        let secs = parseInt(mimin % 1 * 60)
+        let mins = (mimin - mimin % 1)
+        if (mins < 10) {
+            mins = `0${mins}`
+        } else {
+            mins = `${mins}`
+        }
+        if (secs < 10) {
+            secs = `0${secs}`
+        } else {
+            secs = `${secs}`
+        }
+        if (workout_type === 'run') {
+            return `${mins}:${secs} min/mi`
+        } else {
+            return `${parseInt(60 * distance / duration)} mph`
+        }
+    }
+
+    username(activity){
+        if (this.props.users[activity.user_id]){
+        return (
+            <div>{this.props.users[activity.user_id].username}</div>)
+        }else{
+            return(
+                <div>User DNE</div>
+            )
+        }
+    }
     render(){
-        debugger;
         return(<div id="dashboardContainer">
             <div id="userProf">
                 <div id ="profPhotoDashboard">
@@ -20,7 +57,36 @@ class Dashboard extends React.Component{
                 </div>   
             </div>
             <div id="userFeed">
-                User Feed
+                {this.props.activities.map(activity => (
+                    <div id="smallWorkout">
+
+                        <div id='topStats'>
+
+                            <h1 id="workoutCreator"><NavLink to={`/users/${activity.user_id}`}>{this.username(activity)}</NavLink></h1>
+                            <h1 id="smallWorkoutcreatedAt">{activity.created_at}</h1>
+                            <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink>
+                                </h1>
+
+                            <div id="activityStats">
+                                <div id="distanceStat">
+                                    <div id="distanceStatText">Distance: </div>
+                                    <div id="distanceValueStat">{this.props.workouts[activity.workout_id].distance} mi</div>
+                                </div>
+                                <div id="paceStat">
+                                    <div id="paceStatText">Pace: </div>
+                                    <div id="paceValueStat">{this.pace(this.props.workouts[activity.workout_id].distance, this.props.workouts[activity.workout_id].workout_type, activity.duration)}</div>
+                                </div>
+                                <div id="durationStat">
+                                    <div id="durationStatText">Duration: </div>
+                                    <div id="durationValueStat">{activity.duration} mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="staticMapImage">
+                            <img id="static-map"
+                                src={`https://maps.googleapis.com/maps/api/staticmap?size=1200x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.props.workouts[activity.workout_id].static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
+                        </div>
+                    </div>))}
             </div>
      
         </div>)

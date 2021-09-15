@@ -9,8 +9,7 @@ class UserShow extends React.Component{
 
     }
     componentDidMount() {
-        this.props.fetchWorkouts().then((workouts) => {this.props.fetchActivities()})
-        this.props.fetchUser(this.props.userId)
+        this.props.fetchUser(this.props.userId).then(() => this.props.fetchWorkouts().then((workouts) => { this.props.fetchActivities() }))
    
     }
 
@@ -84,6 +83,7 @@ class UserShow extends React.Component{
         )
     }
     render() {
+        debugger;
         return (
         <div>
         <div id='mainfeed'>
