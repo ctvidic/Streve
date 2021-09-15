@@ -50,13 +50,15 @@ class EditWorkout extends React.Component {
         for (let i = 0; i < newPinEdit.length; i++) {
             pinText += newPinEdit[i] + 'X'
         }
+        let newDistance = this.state.distance;
+        newDistance = newDistance.replace(/[^0-9]/g, '');
         let submit = {
             user_id: this.state.user_id,
             route_id: parseInt(this.state.route_id) || null,
             workout_type: this.state.workout_type || 'run',
             duration: parseInt(this.state.duration) || null,
             elevation_change: parseInt(this.state.climb) || null,
-            distance: parseInt(this.state.distance) || null,
+            distance: parseInt(newDistance) || null,
             coordinates: pinText,
             elevationData: inputEle,
             title: this.state.title,
