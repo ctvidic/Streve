@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom'
+import Chart from "react-google-charts";
 
 
 
@@ -53,10 +54,32 @@ class Dashboard extends React.Component{
             return ""
         }
     }
+
+    activities(activities){
+        let actArr = [['S',0],['M',0],['T',0],['W',0],['T',0],['F',0],['S',0]]
+        let day = new Date();
+        let daynumber = day.getDay();
+        if (this.props.activities.length !== 0) {
+            for (let i = 0; i < this.props.activities.length; i++) {
+                if (this.props.activities[i].user_id === this.props.currentUser.id) {
+                    let activityDate = new Date(this.props.activities[i].date)
+                    if (activityDate.getDay() <= daynumber){
+                        actArr[activityDate.getDay()][1]+=1
+                    }
+                }
+            }
+        }
+        return actArr
+    }
     render(){
         let latestActivity = [{title: '', id: ''}]
         if (this.props.activities.length !== 0){
-            latestActivity = this.props.activities[0]
+            for (let i = 0; this.props.activities.length;i++){
+                if (this.props.activities[i].user_id === this.props.currentUser.id){
+                    latestActivity = this.props.activities[i];
+                    break;
+                }
+            }
         }
         let randUsers = []
         for(let i=0; i<3;i++){
@@ -73,9 +96,35 @@ class Dashboard extends React.Component{
                     <Link to={`/users/${parseInt(this.props.currentUser.id)}`}>{this.props.currentUser.username}</Link>
                     <div id="latestActivity">
                         <h1>Latest Activity</h1>
-                        <div><Link to={`/workouts/${latestActivity.workout_id}`}>{latestActivity.title} - {latestActivity.created_at}</Link></div>
+                        <div><Link to={`/workouts/${latestActivity.workout_id}`}>{latestActivity.title} - {latestActivity.date}</Link></div>
                     </div>
-                </div>   
+                    
+                </div> 
+                <div id="dayofweekchart">
+                    <h1>Your Activities This Week</h1>
+                    <Chart
+                        // width={'500px'}
+                        // height={'300px'}
+                        chartType="Bar"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                            ['', 'Entries'],
+                            this.activities(this.props.activities)[0],
+                            this.activities(this.props.activities)[1],
+                            this.activities(this.props.activities)[2],
+                            this.activities(this.props.activities)[3],
+                            this.activities(this.props.activities)[4],
+                            this.activities(this.props.activities)[5],
+                            this.activities(this.props.activities)[6]
+                        ]}
+                        options={{
+                            legend: {position: 'none'}
+                        }}
+                        // For tests
+                       
+                    />
+                </div>
+               
             </div>
             <div id="userFeed">
                 {this.props.activities.map(activity => (
