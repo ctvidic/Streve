@@ -55,6 +55,10 @@ class Dashboard extends React.Component{
         }
     }
     render(){
+        let latestActivity = [{title: '', id: ''}]
+        if (this.props.activities.length !== 0){
+            latestActivity = this.props.activities[0]
+        }
         return(<div id="dashboardContainer">
             <div id="userProf">
                 <div id ="profPhotoDashboard">
@@ -62,6 +66,10 @@ class Dashboard extends React.Component{
                 </div>
                 <div id ="profBox">
                     <Link to={`/users/${parseInt(this.props.currentUser.id)}`}>{this.props.currentUser.username}</Link>
+                    <div id="latestActivity">
+                        <h1>Latest Activity</h1>
+                        <div><Link to={`/workouts/${latestActivity.workout_id}`}>{latestActivity.title} - {latestActivity.created_at}</Link></div>
+                    </div>
                 </div>   
             </div>
             <div id="userFeed">

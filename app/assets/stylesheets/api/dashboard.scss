@@ -40,6 +40,8 @@
     flex-direction: column;
     align-items: center;
     z-index: 3;
+    background: rgb(255, 255, 255);
+
 }
 
 #profBox a{
@@ -78,4 +80,35 @@
 
 #smallWorkout{
     margin-top: 0px;
+     background: rgb(255, 255, 255);
+     border-radius: 5px;
 }
+
+#profBox a{
+    text-decoration:none; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: black;
+    padding: 20px;
+}
+
+
+#latestActivity{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    border-top: 1px solid rgb(218, 218, 218);
+    width: 100%;
+}
+
+#latestActivity h1{
+    font-size: 15px;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-weight: lighter;
+}
+
+#latestActivity a{
+    font-size: 15px;
+}
+

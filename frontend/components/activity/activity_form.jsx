@@ -58,6 +58,9 @@ class ActivityForm extends React.Component{
     
     submitForm(e){
         e.preventDefault();
+        if (parseInt(this.state.duration) < 1){
+            this.setState({duration: 1})
+        }
         let submit = {
             description: this.state.description,
             duration: parseInt(this.state.duration),
@@ -73,11 +76,11 @@ class ActivityForm extends React.Component{
         let updatedWorkouts = this.props.workouts.filter(workout => 
             (workout.workout_type === this.state.workout_type)
         )
-        return(<div id="activityFormDiv"><h1 id="entryheader">Activity Entry</h1>
+        return(<div id="activityFormDiv"><div id="innerActivityFormDiv"><h1 id="entryheader">Activity Entry</h1>
             <form id="activityForm" onSubmit={(e) => this.submitForm(e)}>
                 <div id="leftsideActivity">
                 <div id="durationActivity">
-                <div>Duration</div><input type='text' value={this.state.duration} onChange={this.update('duration')}></input>
+                <div>Duration (mins)</div><input type='number' value={this.state.duration} onChange={this.update('duration')}></input>
                 </div>
                 <div id="titleActivity"><div>Title</div><input type='text' onChange={this.update('title')} value={this.state.title}></input></div>
                 <div id="descriptionActivity">
@@ -99,6 +102,7 @@ class ActivityForm extends React.Component{
                 </ul>
                 </div>
         </form>
+        </div>
         </div>)
     }
 }
