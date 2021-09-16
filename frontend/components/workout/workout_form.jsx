@@ -6,7 +6,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 class WorkoutForm extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             workout: props.workout,
             pins: this.props.pins,

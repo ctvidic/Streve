@@ -7,6 +7,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 class EditWorkout extends React.Component {
     constructor(props) {
         super(props)
+        debugger;
         this.state = {
             workout: props.workout,
             pins: '',
@@ -52,7 +53,7 @@ class EditWorkout extends React.Component {
         }
         inputEle = inputEle.toString();
         let newDistance = this.state.distance;
-        newDistance = newDistance.replace(/[^0-9]./g, '');
+        newDistance = newDistance.replace(/[^0-9]/g, '');
         let submit = {
             user_id: this.state.user_id,
             route_id: parseInt(this.state.route_id) || null,

@@ -3,6 +3,7 @@ import EditWorkout from './edit_workout'
 import { fetchWorkouts, editWorkout, fetchWorkout } from '../../actions/workout_actions';
 
 const mSTP = (state, ownProps) => {
+    debugger;
     return ({
         workouts: Object.values(state.entities.workouts),
         workout: {

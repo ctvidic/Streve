@@ -10,7 +10,7 @@ import SplashContainer from './splash/splash_container'
 import ActivityFormContainer from './activity/activity_form_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import DashboardContainer from './dashboard/dashboard_container'
-import EditWorkoutContainer from './workout/edit_workout'
+import EditWorkoutContainer from './workout/edit_workout_container'
 import { NavLink } from 'react-router-dom'
 
 
