@@ -116,3 +116,117 @@
     display: flex;
     width: 100%;
 }
+
+#infoPics{
+    display:flex;
+    margin: 30px;
+    flex-direction: column;
+}
+
+#workoutGraphic img{
+    height: 50px;
+    width: 50px;
+}
+
+#workoutGraphic{
+    display: flex;
+    width: 300px;
+    border-bottom: 1px solid rgb(207, 207, 207)
+}
+
+#workoutGraphicinfo{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    margin: 5px;
+}
+
+#workoutGraphicinfo div{
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: lighter;
+    padding-bottom: 10px;
+}
+
+#routesGraphic{
+    margin-top: 20px;
+    display: flex;
+    width: 300px;
+    border-bottom: 1px solid rgb(207, 207, 207)
+}
+
+#routesGraphicinfo{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    margin: 5px;
+}
+
+#routesGraphicinfo div{
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: lighter;
+    padding-bottom: 10px;
+}
+
+#routesGraphic img{
+    height: 50px;
+    width: 50px;
+}
+
+#usersGraphic{
+    margin-top: 20px;
+    display: flex;
+    width: 300px;
+    border-bottom: 1px solid rgb(207, 207, 207)
+}
+
+#usersGraphicinfo{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    margin: 5px;
+}
+
+#usersGraphicinfo div{
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: lighter;
+    padding-bottom: 10px;
+}
+
+#usersGraphic img{
+    height: 50px;
+    width: 50px;
+}
+
+#suggestedFriends{
+    margin-top: 30px;
+    display:flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+
+#suggestedFriends h1{
+    margin-bottom: 10px;
+}
+
+#suggestedProf{
+    display:flex;
+    margin: 5px;
+}
+#suggestedProf svg{
+    height: 30px;
+    width: 30px;
+}
+
+#suggestedProf a{
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    padding: 5px;
+}
+
+#suggestedProf a:hover{
+    color: rgb(82, 149, 248)
+}

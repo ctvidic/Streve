@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
         ownProps: ownProps,
         workouts: state.entities.workouts,
         activities: Object.values(state.entities.activities).reverse() || [{title:''}],
-        users: state.entities.users[undefined]
+        users: state.entities.users[undefined],
+        usersArray: Object.values(state.entities.users[undefined]|| {x: 'placeholder'})
     };
 };
 
