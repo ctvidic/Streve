@@ -51,7 +51,7 @@ class WorkoutForm extends React.Component{
         }
         inputEle = inputEle.toString();
         let newDistance = this.state.distance;
-        newDistance = newDistance.replace(/[^0-9][\.\d]/g, '');
+        newDistance = newDistance.replace(/[^0-9.]/g, '');
         // let pinSplit = pinText.split('X').map(val => parseFloat(val))
         debugger;
         let submit= {user_id: this.state.workout.user_id, 
