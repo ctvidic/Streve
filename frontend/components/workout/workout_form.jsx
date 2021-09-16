@@ -41,6 +41,7 @@ class WorkoutForm extends React.Component{
         
     }
     submitForm(e){
+
         e.preventDefault();
         let pinEdit = this.state.pins.map(pin => [pin.location.lat, pin.location.lng])
         let newPinEdit = Array.prototype.concat.apply([], pinEdit);

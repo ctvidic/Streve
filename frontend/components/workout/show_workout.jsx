@@ -112,7 +112,8 @@ class ShowWorkout extends React.Component{
             this.calculateCoords(this.props.workout.coordinates)
         }
         if (this.props.workout.elevationData !== undefined){
-            eleData = this.eleChart(this.props.workout.elevationData);
+            let splitEle = this.props.workout.elevationData.split(',')
+            eleData = this.eleChart(splitEle);
         }
         let username 
         if (this.props.username[this.props.workout.user_id] !== undefined){
