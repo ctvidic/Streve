@@ -5,7 +5,6 @@ import { fetchWorkouts } from '../../actions/workout_actions'
 import React from 'react';
 
 const mSTP = (state, ownProps) => {
-    debugger;
     return ({
         pins: [],
         workouts: Object.values(state.entities.workouts),

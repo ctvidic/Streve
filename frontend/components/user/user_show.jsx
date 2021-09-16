@@ -37,7 +37,6 @@ class UserShow extends React.Component{
         } else {
             secs = `${secs}`
         }
-        debugger;
         if (workout_type === 'run'){
             return `${mins}:${secs} min/mi`
         }else{

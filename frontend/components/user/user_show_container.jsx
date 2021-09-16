@@ -4,7 +4,6 @@ import { fetchWorkouts } from '../../actions/workout_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { fetchActivities, deleteActivity } from '../../actions/activity_actions'
 const mSTP = (state, ownProps) => {
-    debugger;
     return ({
         workouts: state.entities.workouts || {},
         activities: Object.values(state.entities.activities).filter(x => x.user_id === parseInt(ownProps.match.params.id)),

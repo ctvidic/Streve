@@ -50,9 +50,11 @@ class WorkoutForm extends React.Component{
         for(let i=0; i<newPinEdit.length; i++){
             pinText+= newPinEdit[i]+'X'
         }
+        inputEle = inputEle.toString();
         let newDistance = this.state.distance;
         newDistance = newDistance.replace(/[^0-9]/g, '');
         // let pinSplit = pinText.split('X').map(val => parseFloat(val))
+        debugger;
         let submit= {user_id: this.state.workout.user_id, 
             route_id: parseInt(this.state.route_id) || null,
             workout_type: this.state.workout_type || 'run',
@@ -118,7 +120,6 @@ class WorkoutForm extends React.Component{
         return [Math.floor(climb),Math.floor(descent)]
     }
     calculateAndDisplayRoutes(map) {
-            
             let distance;
             let pace;
             let estTime
