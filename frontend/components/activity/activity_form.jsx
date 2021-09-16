@@ -10,7 +10,8 @@ class ActivityForm extends React.Component{
             route_id: '',
             duration: '',
             title: '',
-            description: ''
+            description: '',
+            date: ''
         }
         this.updateWorkoutType = this.updateWorkoutType.bind(this)
         // this.updateRoute = this.updateRoute(this)
@@ -66,7 +67,8 @@ class ActivityForm extends React.Component{
             duration: parseInt(this.state.duration),
             title: this.state.title,
             workout_id: parseInt(this.state.route_id),
-            user_id : this.props.userId
+            user_id : this.props.userId,
+            date: this.state.date
         }
         this.props.createActivity(submit).then(() => {
             this.props.history.push(`../users/${this.props.userId}`)
@@ -85,6 +87,8 @@ class ActivityForm extends React.Component{
                 <div id="titleActivity"><div>Title</div><input type='text' onChange={this.update('title')} value={this.state.title}></input></div>
                 <div id="descriptionActivity">
                 <div>Description</div><textarea type='text' onChange={this.update('description')} value={this.state.description}></textarea></div>
+                <div id="dateActivity">
+                <div>Date</div><input type='date' onChange={this.update('date')} value={this.state.date}></input></div>
                 <select id="activitySelectType" onChange={this.updateWorkoutType} value={this.state.workout_type}>
                     <option value="run">Run</option>
                     {/* <option value="swim">Swim</option> */}

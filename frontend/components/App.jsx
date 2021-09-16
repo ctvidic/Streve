@@ -10,13 +10,15 @@ import SplashContainer from './splash/splash_container'
 import ActivityFormContainer from './activity/activity_form_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import DashboardContainer from './dashboard/dashboard_container'
-import EditWorkoutContainer from './workout/edit_workout_container'
+import EditWorkoutContainer from './workout/edit_workout'
+import { NavLink } from 'react-router-dom'
+
 
 const App = () => (
     <div id='webpage'>
         <header>
             <div id='topHeader'>
-                <h1 id='title'>Streve</h1>
+                <h1 id='title'><NavLink to='/dashboard'>Streve</NavLink></h1>
             </div>
             <GreetingContainer />
         </header>

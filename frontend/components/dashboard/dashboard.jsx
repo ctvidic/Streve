@@ -84,7 +84,7 @@ class Dashboard extends React.Component{
                         <div id='topStats'>
 
                             <h1 id="workoutCreator"><NavLink to={`/users/${activity.user_id}`}>{this.username(activity)}</NavLink></h1>
-                            <h1 id="smallWorkoutcreatedAt">{activity.created_at}</h1>
+                            <h1 id="smallWorkoutcreatedAt">{activity.date}</h1>
                             <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink>
                                 </h1>
 
@@ -114,7 +114,7 @@ class Dashboard extends React.Component{
                 <img src="https://d3nn82uaxijpm6.cloudfront.net/assets/application/dashboard/sidebar-badge-challenges-9908f45d44160c600a4f9d788795b180a74001daae32461705f5f57d90a7c651.png"></img>
                 <div id= "workoutGraphicinfo">
                     <h1>Workouts</h1>
-                    <div>Create a workout and see your route. Workouts can display relevant elevation, distance, and map info</div>
+                    <div>Create a workout and see your route. Workouts can display relevant elevation, distance, and map info. Workouts contain full CRUD functionality.</div>
                 </div>
                 </div>
                 <div id="routesGraphic">

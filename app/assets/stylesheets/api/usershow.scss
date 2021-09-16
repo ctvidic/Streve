@@ -72,7 +72,7 @@
     padding-top:20px;
     text-decoration:none; 
     color: black;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
    
 }
 
@@ -91,7 +91,9 @@
 #smallWorkoutcreatedAt{
     font-family: 'Roboto', sans-serif;
     font-size: 10px;
-    color: rgb(172, 172, 172)
+    color: rgb(172, 172, 172);
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 #smallWorkout{
@@ -107,7 +109,7 @@
    height: 300px;
    left: 0px;
    right: 0px;
-   margin-left: 10px;
+   margin-left: 0px;
 }
 
 #staticMapImage{
