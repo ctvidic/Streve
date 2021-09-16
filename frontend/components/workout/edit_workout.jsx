@@ -50,6 +50,7 @@ class EditWorkout extends React.Component {
         for (let i = 0; i < newPinEdit.length; i++) {
             pinText += newPinEdit[i] + 'X'
         }
+        inputEle = inputEle.toString();
         let newDistance = this.state.distance;
         newDistance = newDistance.replace(/[^0-9]/g, '');
         let submit = {
@@ -66,7 +67,6 @@ class EditWorkout extends React.Component {
             static_map: this.state.static_map,
             id: this.props.workoutId
         }
-        debugger;
         // this.state.workout
         this.props.editWorkout(submit).then(() => {
             this.props.history.push(`../../users/${this.props.user_id}`)

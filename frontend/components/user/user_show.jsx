@@ -46,7 +46,7 @@ class UserShow extends React.Component{
 
     removeActivity(activity){
         if (activity.user_id === this.props.sessionId) {
-            return(<button onClick={()=> this.props.deleteActivity(activity)}>Remove Activity</button>)
+            return (<button onClick={() => this.props.deleteActivity(activity).then(() => window.location.reload())}>Remove Activity</button>)
         }
     }
 
@@ -82,7 +82,6 @@ class UserShow extends React.Component{
         )
     }
     render() {
-        debugger;
         return (
         <div>
         <div id='mainfeed'>

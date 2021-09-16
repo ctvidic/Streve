@@ -41,7 +41,6 @@ class WorkoutForm extends React.Component{
         
     }
     submitForm(e){
-
         e.preventDefault();
         let pinEdit = this.state.pins.map(pin => [pin.location.lat, pin.location.lng])
         let newPinEdit = Array.prototype.concat.apply([], pinEdit);
@@ -52,7 +51,7 @@ class WorkoutForm extends React.Component{
         }
         inputEle = inputEle.toString();
         let newDistance = this.state.distance;
-        newDistance = newDistance.replace(/[^0-9]/g, '');
+        newDistance = newDistance.replace(/[^0-9][\.\d]/g, '');
         // let pinSplit = pinText.split('X').map(val => parseFloat(val))
         debugger;
         let submit= {user_id: this.state.workout.user_id, 
@@ -147,6 +146,7 @@ class WorkoutForm extends React.Component{
                     } else if (this.state.workout_type === 'cycling'){
                         estTime = `${Math.ceil(calcDistance/12*60)} mins`
                     }
+                    debugger;
                     if (distance > 999){
                         this.setState({distance: 999})
                     }else{

@@ -43,7 +43,7 @@ protected
 
 def workout_params
     params.require(:workout).permit(:user_id,:route_id, :workout_type,
-    :duration, :elevation_change, :distance,:date , :description, :title, :created_at, :updated_at,:static_map, :coordinates, elevationData:[])
+    :duration, :elevation_change, :distance,:date , :description, :title, :created_at, :updated_at,:static_map, :coordinates, :elevationData)
 end
 
 
