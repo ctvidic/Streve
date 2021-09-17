@@ -11,9 +11,7 @@ class Dashboard extends React.Component{
     }
     
     componentDidMount(){
-        this.props.fetchWorkouts()
-        this.props.fetchActivities()
-        this.props.fetchUsers()
+        this.props.fetchWorkouts().then(() => this.props.fetchUsers().then(() => { this.props.fetchActivities() }))
     }
 
     pace(distance, workout_type, duration) {
