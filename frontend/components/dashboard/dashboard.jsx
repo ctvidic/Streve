@@ -37,7 +37,7 @@ class Dashboard extends React.Component{
     }
 
     username(activity){
-        if (activity !== undefined){
+        if (activity !== undefined && this.props.users !== undefined){
         if (this.props.users[activity.user_id]){
             return (
                 <div>{this.props.users[activity.user_id].username}</div>)
@@ -65,14 +65,13 @@ class Dashboard extends React.Component{
         let daynumber = day.getDay();
         if (this.props.activities.length !== 0) {
             for (let i = 0; i < this.props.activities.length; i++) {
-                if (this.props.activities[i] !== undefined){
                 if (this.props.activities[i].user_id === this.props.currentUser.id) {
                     let activityDate = new Date(this.props.activities[i].date)
                     if (activityDate.getDay() <= daynumber){
                         actArr[activityDate.getDay()+1][1]+=1
                     }
                 }
-            }
+            
             }
         }
         return actArr
@@ -90,12 +89,11 @@ class Dashboard extends React.Component{
         let latestActivity = [{title: '', id: ''}]
         if (this.props.activities.length !== 0){
             for (let i = 0; this.props.activities.length;i++){
-                if (this.props.activities[i] !== undefined){
                     if (this.props.activities[i].user_id === this.props.currentUser.id){
                         latestActivity = this.props.activities[i];
                         break;
                     }
-                }
+
             }
         }
         let randUsers = []
@@ -196,7 +194,7 @@ class Dashboard extends React.Component{
                     <img src="https://d3nn82uaxijpm6.cloudfront.net/assets/application/dashboard/sidebar-badge-clubs-dda5c075f23e3f2ced7d0e4b2afb87df988978962b6de33c7a232be53b6a75ca.png"></img>
                     <div id="routesGraphicinfo">
                         <h1>Activities</h1>
-                        <div>Create an actitivity and link it to a Workout. Activities display relevant pace and sync to your account and dashboard.</div>
+                        <div>Create an activity and link it to a Workout. Activities display relevant pace and sync to your account and dashboard.</div>
                     </div>
                 </div>
                 <div id="usersGraphic">
