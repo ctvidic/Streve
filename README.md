@@ -5,7 +5,7 @@ Streve is a clone of the popular fitness application [Strava](https://www.strava
 
 ### Technical Details
 
-Streve makes use of a Ruby on Rails backend, and a React/Redux + Javascript frontend. HTML/CSS used for styling. 
+Streve makes use of a Ruby on Rails backend and a React/Redux + Javascript frontend. HTML/CSS used for styling. 
 To calculate and display workouts four APIs were utilized:
 - Google Maps API
 - Google Directions API 
