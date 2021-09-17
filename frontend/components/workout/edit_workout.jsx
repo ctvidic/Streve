@@ -53,7 +53,7 @@ class EditWorkout extends React.Component {
         }
         inputEle = inputEle.toString();
         let newDistance = this.state.distance;
-        newDistance = newDistance.replace(/[^0-9]/g, '');
+        newDistance = newDistance.replace(/[^0-9]./g, '');
         let submit = {
             user_id: this.state.user_id,
             route_id: parseInt(this.state.route_id) || null,
