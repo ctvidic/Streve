@@ -65,13 +65,16 @@ class Dashboard extends React.Component{
         let daynumber = day.getDay();
         if (this.props.activities.length !== 0) {
             for (let i = 0; i < this.props.activities.length; i++) {
-                if (this.props.activities[i].user_id === this.props.currentUser.id) {
-                    let activityDate = new Date(this.props.activities[i].date)
-                    if (activityDate.getDay() <= daynumber){
-                        actArr[activityDate.getDay()+1][1]+=1
+                if (this.props.activities[i] !== undefined){
+                    if (this.props.activities[i].user_id === this.props.currentUser.id) {
+                        let activityDate = new Date(this.props.activities[i].date)
+                        if (activityDate.getDay() <= daynumber){
+                            actArr[activityDate.getDay()+1][1]+=1
+                        }
                     }
+                }else{
+                    break;
                 }
-            
             }
         }
         return actArr
