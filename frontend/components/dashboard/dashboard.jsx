@@ -92,11 +92,15 @@ class Dashboard extends React.Component{
         let latestActivity = [{title: '', id: ''}]
         if (this.props.activities.length !== 0){
             for (let i = 0; this.props.activities.length;i++){
+                if (this.props.activities[i] !== undefined){
                     if (this.props.activities[i].user_id === this.props.currentUser.id){
                         latestActivity = this.props.activities[i];
                         break;
                     }
 
+                }else{
+                    break;
+                }
             }
         }
         let randUsers = []
