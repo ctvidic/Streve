@@ -32,7 +32,7 @@ To calculate and display workouts four APIs were utilized:
 #### Challenges
 
 1. Exporting/Importing Coordinates:
-    Coordinates to be utilized by the google maps directions renderer have to be provide latitude and longitude. Ideally an array data type would be utilized to store this info. Unfortunately arraydata types dont work on all databases and are generally a no-no, so instead mapped out the elevation coordinates into an easily split singluar text data type. Each coordinate is split by an 'X' which makes it easy to package and unpackage on the show/edit page.
+    Coordinates to be utilized by the google maps directions renderer have to be provided latitude and longitude. Ideally an array data type would be utilized to store this info. Unfortunately arraydata types dont work on all databases and are generally a no-no, so instead mapped out the elevation coordinates into an easily split singluar text data type. Each coordinate is split by an 'X' which makes it easy to package and unpackage on the show/edit page.
     
 2. Elevation Values:
     Google maps calculates elevation by selecting evenly spaced points along a line. Unfortunately in this project the line was dynamic and followed roads. To create an accurate elevation data set, up to 256 points are selected along the directions renderer response. If more than 256 points are present along the line, the difference was then randomly disposed of from the array. Although this creates less accurate data, this led to less storage constraints and a quicker response time.
