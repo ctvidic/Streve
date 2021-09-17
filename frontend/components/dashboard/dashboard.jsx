@@ -82,6 +82,7 @@ class Dashboard extends React.Component{
         }
     }
     render(){
+        if (this.props.activities !== undefined && this.props.workouts !== undefined && this.props.users !== undefined){
         let latestActivity = [{title: '', id: ''}]
         if (this.props.activities.length !== 0){
             for (let i = 0; this.props.activities.length;i++){
@@ -212,6 +213,9 @@ class Dashboard extends React.Component{
             </div>
        
         </div>)
+    }else{
+        return(<div>Loading...</div>)
+    }
     }
 
 

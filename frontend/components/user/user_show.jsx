@@ -91,6 +91,7 @@ class UserShow extends React.Component{
         }
     }
     render() {
+        if (this.props.activities !== undefined && this.props.workouts !== undefined && this.props.user !== undefined) {
         return (
         <div>
         <div id='mainfeed'>
@@ -149,7 +150,9 @@ class UserShow extends React.Component{
         </div>
         </div>
         </div>
-        )
+        )}else{
+            return(<div>Loading...</div>)
+        }
         
     }
 
