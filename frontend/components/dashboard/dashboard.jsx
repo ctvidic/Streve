@@ -11,7 +11,9 @@ class Dashboard extends React.Component{
     }
     
     componentDidMount(){
-        this.props.fetchWorkouts().then(()=>{this.props.fetchUsers().then(() => { this.props.fetchActivities() })})
+        this.props.fetchWorkouts()
+        this.props.fetchActivities()
+        this.props.fetchUsers()
     }
 
     pace(distance, workout_type, duration) {
@@ -151,7 +153,7 @@ class Dashboard extends React.Component{
                             <h1 id="smallWorkoutcreatedAt">{activity.date}</h1>
                             </div>
                             </div>
-                                {this.activityImage(this.props.workouts[activity.workout_id].workout_type)}
+                            {this.activityImage(this.props.workouts[activity.workout_id].workout_type)}
                             </div>
                             <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink>
                                 </h1>
