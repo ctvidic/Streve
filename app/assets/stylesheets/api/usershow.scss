@@ -260,3 +260,24 @@
     border: none !important;
 }
 
+#topimage{
+    display:flex;
+    align-items: center;
+}
+#topimage svg{
+    height:40px;
+    width: 40px;
+    padding: 5px;
+    color:rgb(75, 75, 75)
+}
+
+#topStatsFlex{
+    display:flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+#topStatsTypeImage{
+    width:40px;
+    height: 40px;
+}

@@ -53,7 +53,6 @@ class WorkoutForm extends React.Component{
         let newDistance = this.state.distance;
         newDistance = newDistance.replace(/[^0-9.]/g, '');
         // let pinSplit = pinText.split('X').map(val => parseFloat(val))
-        debugger;
         let submit= {user_id: this.state.workout.user_id, 
             route_id: parseInt(this.state.route_id) || null,
             workout_type: this.state.workout_type || 'run',
@@ -126,7 +125,8 @@ class WorkoutForm extends React.Component{
             if (this.state.pins.length > 1){
                 this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
-            let elePoints = this.convPoints(waypoints);
+            // let elePoints = this.convPoints(waypoints);
+            let elePoints = [];
             let origin = waypoints.shift().location;
             let destination = waypoints.pop().location;
             let newwaypoints = waypoints.map(pin => ({location: pin, stopover: false}))
@@ -138,6 +138,19 @@ class WorkoutForm extends React.Component{
                 travelMode: 'WALKING',
             }, (response, status) => {
                 if (status === 'OK') {
+                    for (let i = 0; i < response.routes[0].legs[0].steps.length; i++){
+                        elePoints = elePoints.concat(response.routes[0].legs[0].steps[i].lat_lngs)
+                    }
+                    debugger;
+                    let forLoopLength = elePoints.length
+                    if (elePoints.length > 256 && elePoints.length < 10000){
+                        for(let i=0;i<(forLoopLength - 256);i++){
+                            elePoints.splice(Math.random()*elePoints.length,1)
+                        }
+                    }else if(elePoints.length>=10000){
+                        elePoints = this.convPoints(waypoints);
+                    }
+           
                     static_map = response.routes[0].overview_polyline;
                     let distance = response.routes[0].legs[0].distance.text;
                     let calcDistance = response.routes[0].legs[0].distance.value * 0.00062137;
@@ -146,7 +159,6 @@ class WorkoutForm extends React.Component{
                     } else if (this.state.workout_type === 'cycling'){
                         estTime = `${Math.ceil(calcDistance/12*60)} mins`
                     }
-                    debugger;
                     if (distance > 999){
                         this.setState({distance: 999})
                     }else{
@@ -157,35 +169,39 @@ class WorkoutForm extends React.Component{
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
+                this.state.elevationService.getElevationAlongPath({
+                    path: elePoints,
+                    samples: 256
+                }, (response, status) => {
+                    let eleArr
+                    if (status === 'OK') {
+                        eleArr = response.map(eleObj => eleObj.elevation)
+                        let climbAndDescent = this.findClimbAndDescent(eleArr)
+                        this.setState({ climb: climbAndDescent[0], descent: climbAndDescent[1], eleArr: eleArr })
+                    } else {
+                        window.alert('Elevation request failed due to ' + status);
+                    }
+                });
             });}
 
-                var polypath= new google.maps.Polyline({
-                            path: elePoints,
-                            geodesic: true,
-                            strokeColor: "#FF0000",
-                            strokeOpacity: 1.0,
-                            strokeWeight: 2,
-                })
-                if (this.state.on_road){ 
-                    polypath.setMap(null);
-                }else{
-                    polypath.setMap(this.map);
-                    this.state.directionsRenderer.setMap(null);
-                }
-            this.state.elevationService.getElevationAlongPath({
-                path: elePoints,
-                samples: 256
-            }, (response,status) => {
-                let eleArr
-                if (status === 'OK') {
-                    eleArr = response.map(eleObj => eleObj.elevation)
-                    let climbAndDescent= this.findClimbAndDescent(eleArr)
-                    this.setState({ climb: climbAndDescent[0], descent: climbAndDescent[1], eleArr: eleArr})
-                }else{
-                    window.alert('Elevation request failed due to ' + status);
-                }
-            });
+                // var polypath= new google.maps.Polyline({
+                //             path: elePoints,
+                //             geodesic: true,
+                //             strokeColor: "#FF0000",
+                //             strokeOpacity: 1.0,
+                //             strokeWeight: 2,
+                // })
+                // if (this.state.on_road){ 
+                //     polypath.setMap(null);
+                // }else{
+                //     polypath.setMap(this.map);
+                //     this.state.directionsRenderer.setMap(null);
+                // }
+
+          
+         
             }
+            
             // this.updatePins();
             // this.setState({workout_type: 'run'})
     }

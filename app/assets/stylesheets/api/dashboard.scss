@@ -109,7 +109,8 @@
 }
 
 #latestActivity a{
-    margin-top: 5px;
+    padding-top: 10px !important;
+    margin-top: 10px !important;
     font-size: 15px;
 }
 
@@ -260,3 +261,20 @@
     font-weight: bold;
 }
 
+#topStatsProf{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#topStatsProf svg{
+    height:40px;
+    width: 40px;
+    padding: 5px;
+    color:rgb(75, 75, 75)
+}
+
+#littleProf{
+    display:flex;
+    align-items: center;
+}
