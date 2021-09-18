@@ -16,6 +16,8 @@ To calculate and display workouts four APIs were utilized:
 
 1. Dashboard Page:
     The dashboard page displays a feed of all activities created by users on the website. Activities show relevant information like speed, distance, duration, while also displaying a small static map of the workout. Users can navigate to others users page's through the dashboard, and can also view relevant information about their own workout trends (activities in past week).
+    <img width="1359" alt="Screen Shot 2021-09-18 at 10 59 26 AM" src="https://user-images.githubusercontent.com/80602202/133893211-93801295-544c-400e-9a22-91e7a94a8b16.png">
+
 
 2. User Page:
     A user page shows users there own activities, as well as general info about their account. A user page aggregates relevant duration, distance, and elevation data for presentation to the user.
