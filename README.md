@@ -22,12 +22,15 @@ To calculate and display workouts four APIs were utilized:
 
 3. Workout Create/Edit/Delete Page:
     Workouts can be created and edited through google maps API based editor. Users place down markers which will then trigger the code to calculate the best route as well as relevant elevation data. On submission the route will be saved to the database as string of coordinates and elevation points. Workouts can also be edited and deleted through this same system.
+    ![image](https://user-images.githubusercontent.com/80602202/133892910-b37e8181-4bc4-4777-ad3f-6ed6a135fc01.png)
 
 4. Activitiy Create:
     On the activity create page a user can choose their workout as well as the duration for their own activity. This submitted activity will be whats displayed on the dashboard page and the user show page. 
 
 5. Workout Show:
     The workout show page displays a large map of the specific workout as well relevant data. Below the map an elevation profile is create through Google Charts that displays an accurate depiction of elevation points along the route.
+    ![image](https://user-images.githubusercontent.com/80602202/133893018-f6a71162-5afd-4d49-8eb0-357d50996147.png)
+
 
 #### Challenges
 
@@ -40,7 +43,9 @@ To calculate and display workouts four APIs were utilized:
 #### Future Work
 
 1. Off-Road Capability
-    The real Strava is not confined to solely following roads or set paths. Due to time constraints this project could fully incorporate Google Maps Polylines feature to fully enable off-road workouts. This would be a great addition in the future to allow for off-road activities.
+    The real Strava is not confined to solely following roads or set paths. Due to time constraints this project not could fully incorporate Google Maps Polylines feature to fully enable off-road workouts. This would be a great addition in the future to allow for off-road activities.
     
 #### Also...
 - Strava means 'strive' in Swedish. Streve means 'strive' in Norwegian.
+
+
