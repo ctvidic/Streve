@@ -1,7 +1,7 @@
 # Streve
 ### Overview
 
-Streve is a clone of the popular fitness application [Strava](https://www.strava.com/). Streve allows users to create, customize, and share their own running/cycling workouts. Relevant distance, pace, and elevation data is calculated based off activity. Users can interact with workouts and activities created by other users. Streve was designed to as closely resemble Strava as possible in web format.
+[Streve](https://streve.herokuapp.com/#/) is a clone of the popular fitness application [Strava](https://www.strava.com/). Streve allows users to create, customize, and share their own running/cycling workouts. Relevant distance, pace, and elevation data is calculated based off activity. Users can interact with workouts and activities created by other users. Streve was designed to as closely resemble Strava as possible in web format.
 
 ### Technical Details
 
