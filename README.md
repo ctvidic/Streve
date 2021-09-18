@@ -37,5 +37,10 @@ To calculate and display workouts four APIs were utilized:
 2. Elevation Values:
     Google maps calculates elevation by selecting evenly spaced points along a line. Unfortunately in this project the line was dynamic and followed roads. To create an accurate elevation data set, up to 256 points are selected along the directions renderer response. If more than 256 points are present along the line, the difference was then randomly disposed of from the array. Although this creates less accurate data, this led to less storage constraints and a quicker response time.
 
+#### Future Work
+
+1. Off-Road Capability
+    The real Strava is not confined to solely following roads or set paths. Due to time constraints this project could fully incorporate Google Maps Polylines feature to fully enable off-road workouts. This would be a great addition in the future to allow for off-road activities.
+    
 #### Also...
 - Strava means 'strive' in Swedish. Streve means 'strive' in Norwegian.
