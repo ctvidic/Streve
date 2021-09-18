@@ -38,4 +38,4 @@ To calculate and display workouts four APIs were utilized:
     Google maps calculates elevation by selecting evenly spaced points along a line. Unfortunately in this project the line was dynamic and followed roads. To create an accurate elevation data set, up to 256 points are selected along the directions renderer response. If more than 256 points are present along the line, the difference was then randomly disposed of from the array. Although this creates less accurate data, this led to less storage constraints and a quicker response time.
 
 #### Also...
-- Strava means 'strive' in Swedish. Streve means 'strive' Norwegian.
+- Strava means 'strive' in Swedish. Streve means 'strive' in Norwegian.
