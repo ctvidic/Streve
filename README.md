@@ -10,7 +10,9 @@ To calculate and display workouts four APIs were utilized:
 - Google Maps API
 - Google Directions API 
 - Google Static Maps API
-- Google Maps Elevation API 
+- Google Maps Elevation API
+
+Google Charts was utilized for visualization tools
 
 #### Page Overview
 
