@@ -24,7 +24,7 @@ To calculate and display workouts four APIs were utilized:
     Workouts can be created and edited through google maps API based editor. Users place down markers which will then trigger the code to calculate the best route as well as relevant elevation data. On submission the route will be saved to the database as string of coordinates and elevation points. Workouts can also be edited and deleted through this same system.
     ![image](https://user-images.githubusercontent.com/80602202/133892910-b37e8181-4bc4-4777-ad3f-6ed6a135fc01.png)
 
-4. Activitiy Create:
+4. Activity Create:
     On the activity create page a user can choose their workout as well as the duration for their own activity. This submitted activity will be whats displayed on the dashboard page and the user show page. 
 
 5. Workout Show:
