@@ -342,7 +342,6 @@ class EditWorkout extends React.Component {
                         {/* <label>Distance
                         <input type='text' onChange={this.update('distance')} value={this.state.distance}></input>
                     </label> */}
-                        <button id="changeRoads" type='button' onClick={() => this.changeRoads()}>Change Roads</button>
                         <button id="submitWorkout" value='submit'>Submit Route</button>
                         <button id='loop' type='button' onClick={() => this.loopRoute()}>Loop Route</button>
                         <button id='removePoint' type='button' onClick={() => this.removeLastPoint()}>Remove Last Point</button>

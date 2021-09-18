@@ -135,10 +135,10 @@ class ShowWorkout extends React.Component{
             {/* <li>Type:{this.props.workout.workout_type}</li> */}
             <div id="topBoxRight">
             <h1>Distance: {this.props.workout.distance} mi </h1>
-            <h1>Elevation Gain: {this.props.workout.elevation_change} ft </h1>
+            <h1>Elevation Gain: {this.props.workout.elevation_change} m </h1>
             </div>
             <div id="topBoxRight">
-            <h1>Created At: {this.props.workout.created_at} </h1>
+            <h1>Created At: {this.props.workout.created_at.split('T')[0]} </h1>
             <h1>Created By: {username}</h1>
             </div>
            
