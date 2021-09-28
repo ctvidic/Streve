@@ -17,7 +17,11 @@ class UserShow extends React.Component{
     handleSubmit(){
 
     }
-
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.type !== this.props.match.params.type) {
+            this.forceUpdate();
+        }
+    }
     createWorkout(){
         <Redirect to="/dashboard" />
         // this.props.history.push('/api/workouts/new')
@@ -56,9 +60,11 @@ class UserShow extends React.Component{
         let totalElev = 0
         let totalDist = 0
         for(let i=0;i<this.props.activities.length;i++){
+            if (this.props.workouts[this.props.activities[i].workout_id] !== undefined){
             totalTime += this.props.activities[i].duration
             totalElev += this.props.workouts[this.props.activities[i].workout_id].elevation_change
             totalDist += this.props.workouts[this.props.activities[i].workout_id].distance
+            }
         }
         if (totalTime > 59){
             let hrs = parseInt(totalTime / 60)
@@ -83,6 +89,19 @@ class UserShow extends React.Component{
         )
     }
 
+    findWorkout(id){
+        if (this.props.workouts[id] !== undefined){
+            return this.props.workouts[id]
+        }else{
+            return {
+                distance: 1,
+                workout_type: 'run',
+                elevation_change: 2,
+                static_map: 'Loading'
+            }
+        }
+        
+    }
     activityImage(type) {
         if (type === 'cycling') {
             return <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="biking" class="svg-inline--fa fa-biking fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M400 96a48 48 0 1 0-48-48 48 48 0 0 0 48 48zm-4 121a31.9 31.9 0 0 0 20 7h64a32 32 0 0 0 0-64h-52.78L356 103a31.94 31.94 0 0 0-40.81.68l-112 96a32 32 0 0 0 3.08 50.92L288 305.12V416a32 32 0 0 0 64 0V288a32 32 0 0 0-14.25-26.62l-41.36-27.57 58.25-49.92zm116 39a128 128 0 1 0 128 128 128 128 0 0 0-128-128zm0 192a64 64 0 1 1 64-64 64 64 0 0 1-64 64zM128 256a128 128 0 1 0 128 128 128 128 0 0 0-128-128zm0 192a64 64 0 1 1 64-64 64 64 0 0 1-64 64z"></path></svg>
@@ -114,7 +133,7 @@ class UserShow extends React.Component{
         </div>
         
         </div>
-                        <div id='topStatsTypeImage'>{this.activityImage(this.props.workouts[activity.workout_id].workout_type)}</div>
+                        <div id='topStatsTypeImage'>{this.activityImage(this.findWorkout(activity.workout_id).workout_type)}</div>
 
         </div>
         <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink>
@@ -125,11 +144,11 @@ class UserShow extends React.Component{
         <div id="activityStats">
             <div id="distanceStat">
                 <div id="distanceStatText">Distance: </div>
-                <div id="distanceValueStat">{this.props.workouts[activity.workout_id].distance} mi</div>
+                <div id="distanceValueStat">{this.findWorkout(activity.workout_id).distance} mi</div>
             </div>
             <div id="paceStat">
                 <div id="paceStatText">Pace: </div>
-                            <div id="paceValueStat">{this.pace(this.props.workouts[activity.workout_id].distance, this.props.workouts[activity.workout_id].workout_type,activity.duration)}</div>
+                            <div id="paceValueStat">{this.pace(this.findWorkout(activity.workout_id).distance, this.findWorkout(activity.workout_id).workout_type,activity.duration)}</div>
             </div>
             <div id="durationStat">
                 <div id="durationStatText">Duration: </div>
@@ -139,7 +158,7 @@ class UserShow extends React.Component{
         </div>
         <div id="staticMapImage">
                 <img id="static-map"
-                    src={`https://maps.googleapis.com/maps/api/staticmap?size=1200x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.props.workouts[activity.workout_id].static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
+                        src={`https://maps.googleapis.com/maps/api/staticmap?size=1200x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.findWorkout(activity.workout_id).static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
         </div>
         </div>))}
         </div>

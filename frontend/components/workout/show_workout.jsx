@@ -96,11 +96,14 @@ class ShowWorkout extends React.Component{
         return parseInt(duration/distance)
     }
 
+    refresh(){
+        this.forceUpdate;
+    }
     removeWorkout(){
         if (this.props.workout.user_id === this.props.sessionId){
         return(<div id="editDeleteLinks">
         <NavLink to={`/users/${this.props.sessionId}`}
-                onClick={() => this.props.removeWorkout(this.props.workout).then(() => window.location.reload())}>Remove Workout</NavLink>
+                onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>
             <NavLink to={`/workouts/${this.props.workoutId}/edit`}>Edit Workout</NavLink></div>)
             }
         }
