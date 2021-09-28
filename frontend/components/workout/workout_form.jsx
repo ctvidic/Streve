@@ -40,6 +40,11 @@ class WorkoutForm extends React.Component{
         this.reloadMap = this.reloadMap.bind(this)
         
     }
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
+
+
     submitForm(e){
         e.preventDefault();
         let pinEdit = this.state.pins.map(pin => [pin.location.lat, pin.location.lng])
@@ -305,6 +310,15 @@ class WorkoutForm extends React.Component{
             }
         }
     }
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={i}>{error}</li>
+                ))}
+            </ul>
+        );
+    }
     render(){   
         let pace
         if ((parseInt(this.state.duration) / 60) === 0){
@@ -324,6 +338,7 @@ class WorkoutForm extends React.Component{
                     <br></br>
                     <h1 id="routeHeader">Route Form</h1>
                     <br></br>
+                    <div id="workoutErrors">{this.renderErrors()}</div>
                     <input placeholder="Workout Title" id="titleinput" type='text' onChange={this.update('title')} value={this.state.title}></input>
                     <br></br>
                     <textarea id="workoutFormDesc" onChange={this.update('description')} value={this.state.description} placeholder="Workout Description"></textarea>

@@ -21,6 +21,11 @@ class ActivityForm extends React.Component{
         this.props.fetchWorkouts()
     }
 
+    componentWillUnmount() {
+        debugger;
+        this.props.clearErrors();
+    }
+
     update(text) {
         return e => {
             this.setState({ [text]: e.currentTarget.value })
@@ -74,13 +79,24 @@ class ActivityForm extends React.Component{
             this.props.history.push(`../users/${this.props.userId}`)
         })
     }
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={i}>{error}</li>
+                ))}
+            </ul>
+        );
+    }
+
     render(){
         let updatedWorkouts = this.props.workouts.filter(workout => 
             (workout.workout_type === this.state.workout_type)
         )
         return(<div id="activityFormDiv"><div id="innerActivityFormDiv"><h1 id="entryheader">Activity Entry</h1>
-            <form id="activityForm" onSubmit={(e) => this.submitForm(e)}>
+            <form id="activityForm" onSubmit={(e) => this.submitForm(e)}>   
                 <div id="leftsideActivity">
+                <div id="activityErrors">{this.renderErrors()}</div>
                 <div id="durationActivity">
                 <div>Duration (mins)</div><input type='number' value={this.state.duration} onChange={this.update('duration')}></input>
                 </div>

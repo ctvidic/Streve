@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import WorkoutForm from './workout_form'
-import { fetchWorkouts, createWorkout } from '../../actions/workout_actions';
+import { fetchWorkouts, createWorkout, clearErrors } from '../../actions/workout_actions';
 
 const mSTP = (state, ownProps) => {
+    debugger;
     return ({
         workouts: Object.values(state.entities.workouts),
         workout: {
@@ -14,7 +15,8 @@ const mSTP = (state, ownProps) => {
             distance: 0
         },
         pins: [],
-        user_id: state.session.id
+        user_id: state.session.id,
+        errors: state.entities.workoutErrors
 
     })
 }
@@ -22,7 +24,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => {
     return ({
         fetchWorkouts: () => dispatch(fetchWorkouts()),
-        createWorkout: workout => dispatch(createWorkout(workout))
+        createWorkout: workout => dispatch(createWorkout(workout)),
+        clearErrors: () => dispatch(clearErrors())
         
     })
 }

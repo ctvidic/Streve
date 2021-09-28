@@ -39,12 +39,17 @@
 
 #titleActivity{
     padding-top: 10px;
-
+    font-weight: lighter;
     font-family: 'Roboto', sans-serif;
     display:flex;
     flex-direction: column;
 }
-
+#activityErrors{
+    font-family: 'Roboto', sans-serif;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
 #descriptionActivity{
     padding-top: 10px;
     font-family: 'Roboto', sans-serif;

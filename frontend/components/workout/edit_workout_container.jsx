@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import EditWorkout from './edit_workout'
-import { fetchWorkouts, editWorkout, fetchWorkout } from '../../actions/workout_actions';
+import { fetchWorkouts, editWorkout, fetchWorkout, clearErrors } from '../../actions/workout_actions';
 
 const mSTP = (state, ownProps) => {
     debugger;
@@ -17,7 +17,8 @@ const mSTP = (state, ownProps) => {
         pins: [],
         user_id: state.session.id,
         workoutId: parseInt(ownProps.match.params.id),
-        workout: state.entities.workouts[parseInt(ownProps.match.params.id)] || {}
+        workout: state.entities.workouts[parseInt(ownProps.match.params.id)] || {},
+        errors: state.entities.workoutErrors
     })
 }
 
@@ -25,8 +26,8 @@ const mDTP = (dispatch) => {
     return ({
         fetchWorkouts: () => dispatch(fetchWorkouts()),
         editWorkout: workout => dispatch(editWorkout(workout)),
-        fetchWorkout: (id) => dispatch(fetchWorkout(id))
-
+        fetchWorkout: (id) => dispatch(fetchWorkout(id)),
+        clearErrors: () => dispatch(clearErrors())
     })
 }
 
