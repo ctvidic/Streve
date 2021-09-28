@@ -17,7 +17,6 @@ const mSTP = (state, ownProps) => {
         pins: [],
         user_id: state.session.id,
         errors: state.entities.workoutErrors
-
     })
 }
 

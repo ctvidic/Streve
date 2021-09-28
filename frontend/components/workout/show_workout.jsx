@@ -29,7 +29,6 @@ class ShowWorkout extends React.Component{
         this.props.fetchWorkouts()
         this.map = new google.maps.Map(document.getElementById('showmap'), mapOptions);
 
-      
        
 
     }
@@ -103,11 +102,14 @@ class ShowWorkout extends React.Component{
         if (this.props.workout.user_id === this.props.sessionId){
         return(<div id="editDeleteLinks">
         <NavLink to={`/users/${this.props.sessionId}`}
-                onClick={() => this.props.removeWorkout(this.props.workout)}>Remove Workout</NavLink>
+                onClick={() => this.props.removeWorkout(this.props.workout).then(() => this.forceUpdate)}>Remove Workout</NavLink>
             <NavLink to={`/workouts/${this.props.workoutId}/edit`}>Edit Workout</NavLink></div>)
             }
         }
     render() {
+        
+
+        if (Object.keys(this.props.workout).length !== 0) {
         let eleData
         let pace = this.convertPace(this.props.workout.duration, this.props.workout.distance)
         let newTime = this.convertTime(this.props.workout.duration)
@@ -124,6 +126,14 @@ class ShowWorkout extends React.Component{
         }else{
             username = ""
         }
+        var createdAt
+        if (this.props.workout !== undefined) {
+
+            createdAt = this.props.workout.created_at.split('T')[0]
+        }else{
+            createdAt = 'loading'
+        }
+
         return(<div id="showWorkout">
             <div id="showWorkoutstats">
             <div id="titleBox">
@@ -141,7 +151,7 @@ class ShowWorkout extends React.Component{
             <h1>Elevation Gain: {this.props.workout.elevation_change} m </h1>
             </div>
             <div id="topBoxRight">
-            <h1>Created At: {this.props.workout.created_at.split('T')[0]} </h1>
+            <h1>Created At: {createdAt} </h1>
             <h1>Created By: {username}</h1>
             </div>
            
@@ -173,6 +183,12 @@ class ShowWorkout extends React.Component{
                 />
             </div>
             </div>)
+        }else{
+            return(
+                <div id='showmap'>
+                </div>
+            )
+        }
     }
 }
 
