@@ -15,8 +15,6 @@ class ShowWorkout extends React.Component{
                 polylineOptions: { strokeColor: "#FC4C02" }
             })
         }
-
-        // this.state = this.props.workout
     }
     componentDidMount() {
         const mapOptions = {
@@ -66,8 +64,6 @@ class ShowWorkout extends React.Component{
             travelMode: 'WALKING',
         }, (response, status) => {
             if (status === 'OK') {
-                // distance = response.routes[0].legs[0].distance.text;
-                // this.setState({ distance, pace })
                 this.state.directionsRenderer.setDirections(response);
             } else {
                 window.alert('Directions request failed due to ' + status);
