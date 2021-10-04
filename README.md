@@ -49,7 +49,7 @@ Google Charts was utilized for visualization tools. GPS to GPX package used for 
     Google maps calculates elevation by selecting evenly spaced points along a line. Unfortunately in this project the line was dynamic and followed roads. To create an accurate elevation data set, up to 256 points are selected along the directions renderer response. If more than 256 points are present along the line, the difference was then randomly disposed of from the array. Although this creates less accurate data, this led to less storage constraints and a quicker response time.
 
 3. #### Exporting GPX:
-    An GPS-to-GPX [package](https://www.npmjs.com/package/gps-to-gpx) was utilized to convert outputted google location data in the direction renderer to specific latitude longitude coordinates that could be downloaded and visualized off site.
+    An GPS-to-GPX [package](https://www.npmjs.com/package/gps-to-gpx) was utilized to convert outputted google location data in the direction renderer to specific latitude longitude coordinates that could be downloaded and visualized off site. Nested for loops were used to accomplish this by analyzing each direction renderer segment and each lat/lng within them. 
 
 #### Future Work
 
