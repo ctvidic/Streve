@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import AreaChart from "react-google-charts";
+import createGpx from 'gps-to-gpx';
 
 class ShowWorkout extends React.Component{
     constructor(props){
@@ -13,7 +14,11 @@ class ShowWorkout extends React.Component{
                 draggable: true,
                 markerOptions: { draggable: true },
                 polylineOptions: { strokeColor: "#FC4C02" }
-            })
+            }),
+            data: {
+                waypoints: []
+            },
+            gpx: ''
         }
     }
     componentDidMount() {
@@ -53,6 +58,11 @@ class ShowWorkout extends React.Component{
     }
     calculateCoords(coords){
         this.props.workout.coordinates = this.props.workout.coordinates.split('X').map(val => parseFloat(val)).slice(0,-1)
+        // for (let i = 0; i < this.props.workout.coordinates.length - 1; i += 2) {
+        //     this.props.data.waypoints.push({ latitude: this.props.workout.coordinates[i], longitude: this.props.workout.coordinates[i + 1] })
+        // }
+        // const gpx = createGpx(this.props.data.waypoints)
+        // debugger;
         this.state.directionsRenderer.setMap(this.map);
         let origin = this.findOrigin(this.props.workout.coordinates)
         let destination = this.findDestination(this.props.workout.coordinates)
@@ -64,7 +74,21 @@ class ShowWorkout extends React.Component{
             travelMode: 'WALKING',
         }, (response, status) => {
             if (status === 'OK') {
+                let data = {waypoints:[]}
+                for (let i = 0; i < response.routes[0].legs[0].steps.length; i++) {
+
+                    for (let j = 0; j < response.routes[0].legs[0].steps[i].lat_lngs.length;j++){
+
+                    data.waypoints.push({
+                        latitude: response.routes[0].legs[0].steps[i].lat_lngs[j].lat(),
+                        longitude: response.routes[0].legs[0].steps[i].lat_lngs[j].lng()
+                    })
+                    }
+
+                }
+                this.state.gpx = createGpx(data.waypoints)
                 this.state.directionsRenderer.setDirections(response);
+                
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
@@ -78,7 +102,14 @@ class ShowWorkout extends React.Component{
         }
         return newArr
     }
-
+    downloadXML(){
+        const url = 'data:text/json;charset=utf-8,' + this.state.gpx;
+        const link = document.createElement('a');
+        link.download = `workout.gpx`;
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+    }
     convertTime(mins){
         let hours = (mins / 60);
         let rhours = Math.floor(hours);
@@ -104,7 +135,6 @@ class ShowWorkout extends React.Component{
         }
     render() {
         
-
         if (Object.keys(this.props.workout).length !== 0) {
         let eleData
         let pace = this.convertPace(this.props.workout.duration, this.props.workout.distance)
@@ -112,6 +142,7 @@ class ShowWorkout extends React.Component{
         if (this.props.workout.coordinates !== undefined){
             this.calculateCoords(this.props.workout.coordinates)
         }
+
         if (this.props.workout.elevationData !== undefined){
             let splitEle = this.props.workout.elevationData.split(',')
             eleData = this.eleChart(splitEle);
@@ -134,7 +165,10 @@ class ShowWorkout extends React.Component{
             <div id="showWorkoutstats">
             <div id="titleBox">
                     <h1>{this.props.workout.title}</h1>
-                    {this.removeWorkout()}                    
+                    <div id="upperRightShowActions">
+                    {this.removeWorkout()}  
+                    <button id="gpxButton" onClick={() => this.downloadXML()}>Export Workout As GPX</button>
+                    </div>
             </div>
             <div id="box">
             <div id="boxleft">

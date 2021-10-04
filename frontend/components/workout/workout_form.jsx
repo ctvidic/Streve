@@ -146,7 +146,6 @@ class WorkoutForm extends React.Component{
                     for (let i = 0; i < response.routes[0].legs[0].steps.length; i++){
                         elePoints = elePoints.concat(response.routes[0].legs[0].steps[i].lat_lngs)
                     }
-                    debugger;
                     let forLoopLength = elePoints.length
                     if (elePoints.length > 256 && elePoints.length < 10000){
                         for(let i=0;i<(forLoopLength - 256);i++){

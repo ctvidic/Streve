@@ -7,7 +7,9 @@ const mSTP = (state, ownProps) => {
         workout: state.entities.workouts[ownProps.match.params.id] || {},
         sessionId: state.session.id,
         username: state.entities.users,
-        workoutId: ownProps.match.params.id
+        workoutId: ownProps.match.params.id,
+        data: {waypoints:[]},
+        gpx: ''
     })
 }
 

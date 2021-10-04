@@ -12,7 +12,7 @@
     position: absolute;
     flex-direction: column;
     width: 80%;
-    height: 880px;
+    height: 878px;
     left: 10%;
     margin-top: 100px;
     font-family: 'Roboto', sans-serif;
@@ -91,11 +91,11 @@
     z-index: 2;
 }
 
-#editDeleteLinks{
-    margin-right: 5%;
-    display: flex;
-    align-items: center
-}
+// #editDeleteLinks{
+//     margin-right: 5%;
+//     display: flex;
+//     align-items: center
+// }
 
 #workoutdesc{
     padding: 10px;
@@ -103,4 +103,36 @@
 
 #showWorkoutstats{
     z-index: 10;
+}
+
+
+#gpxButton{
+    background-color: orangered;
+    color: white;
+    outline: none;
+    letter-spacing: 1px;
+    height: 80%;
+    border: none;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 10px;
+    margin: 5px;
+    z-index: 2;
+    display:flex;
+    align-items: center;
+}
+
+#gpxButton:hover{
+    cursor: pointer;
+}
+
+#upperRightShowActions{
+    display:flex;
+}
+#upperRightShowActions a{
+    margin-top: 5px;
+}
+#editDeleteLinks{
+    margin-top: 9px !important;
 }
