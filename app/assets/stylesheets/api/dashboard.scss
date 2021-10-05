@@ -8,9 +8,10 @@
     display: flex;
 }
 
+
 #userProf{
     //  border: 1px solid gray;
-     width: 30%;
+     width:300px !important;
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -277,4 +278,19 @@
 #littleProf{
     display:flex;
     align-items: center;
+}
+@media (max-width: 1350px) 
+{
+    #infoPics
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 950px) 
+{
+    #userProf
+    {
+        display: none;
+    }
 }

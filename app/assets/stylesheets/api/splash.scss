@@ -3,6 +3,7 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
+    overflow: hidden;
 }
 
 #splash-header{
@@ -143,6 +144,7 @@
 
 #base{
     display: flex;
+
 }
 
 #logosLinkBottom svg{
@@ -169,4 +171,36 @@
     z-index: 1000;
     color: white;
     z-index: 100;
+}
+
+@media (max-width: 920px) 
+{
+    #phone
+    {
+        display: none;
+    }
+    #splash-header
+    {
+        font-size: 30px;
+    }
+    #splash{
+        height: 100vh
+    }
+    #base{
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+
+@media (max-width: 620px) 
+{
+    #splash-header
+    {
+        font-size: 0px;
+    }
+    #base{
+        position: absolute;
+        bottom: 0;
+    }
 }
