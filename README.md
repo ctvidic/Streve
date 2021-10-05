@@ -47,24 +47,55 @@ Google Charts was utilized for visualization tools. GPS to GPX package used for 
     
 2. #### Elevation Values:
     Google maps calculates elevation by selecting evenly spaced points along a line. Unfortunately in this project the line was dynamic and followed roads. To create an accurate elevation data set, up to 256 points are selected along the directions renderer response. If more than 256 points are present along the line, the difference was then randomly disposed of from the array. Although this creates less accurate data, this led to less storage constraints and a quicker response time.
+    
     Code Example:
     ```javascript
     for (let i = 0; i < response.routes[0].legs[0].steps.length; i++){
-                        elePoints = elePoints.concat(response.routes[0].legs[0].steps[i].lat_lngs)
+        elePoints = elePoints.concat(response.routes[0].legs[0].steps[i].lat_lngs)
+    }
+    let forLoopLength = elePoints.length
+    if (elePoints.length > 256 && elePoints.length < 10000){
+        for(let i=0;i<(forLoopLength - 256);i++){
+           elePoints.splice(Math.random()*elePoints.length,1)
+        }
+    }else if(elePoints.length>=10000){
+        elePoints = this.convPoints(waypoints);
+    }
+    ```
+    The above code receives the Direction Renderer API response. It will then continuously concats additional latitude longitude data points along the specified route to an elevation points array. An if statement then analyzes whether there are more then 256 elepoints in the array and if so, slices random data points out. If the length of the elePoints array exceeds 10000 this process becomes too taxing and we can instead just rely upon our set waypoints for accurate elevation data.
+    
+    Code Example:
+    ```javascript
+    this.state.elevationService.getElevationAlongPath({
+                    path: elePoints,
+                    samples: 256
+                }, (response, status) => {
+                    let eleArr
+                    if (status === 'OK') {
+                        eleArr = response.map(eleObj => eleObj.elevation)
+                        let climbAndDescent = this.findClimbAndDescent(eleArr)
+                        this.setState({ climb: climbAndDescent[0], descent: climbAndDescent[1], eleArr: eleArr })
+                    } else {
+                        window.alert('Elevation request failed due to ' + status);
                     }
-                    let forLoopLength = elePoints.length
-                    if (elePoints.length > 256 && elePoints.length < 10000){
-                        for(let i=0;i<(forLoopLength - 256);i++){
-                            elePoints.splice(Math.random()*elePoints.length,1)
-                        }
-                    }else if(elePoints.length>=10000){
-                        elePoints = this.convPoints(waypoints);
-                    }
+                });
      ```
-
+     With the elevation data point array we can then feed this our Google Maps Elevation API, which will output an elevation data response. The findClimbAndDescent method with analyze each point in comparison to the adjacent to calculate and aggregate climb and descent data as an array. 
+     
 3. #### Exporting GPX:
-    An GPS-to-GPX [package](https://www.npmjs.com/package/gps-to-gpx) was utilized to convert outputted google location data in the direction renderer to specific latitude longitude coordinates that could be downloaded and visualized off site. Nested for loops were used to accomplish this by analyzing each direction renderer segment and each lat/lng within them. 
-
+    An GPS-to-GPX [package](https://www.npmjs.com/package/gps-to-gpx) was utilized to convert outputted google location data in the direction renderer to specific latitude longitude coordinates that could be downloaded and visualized off site. Nested for loops were used to accomplish this by analyzing each direction renderer segment and each lat/lng within them. Data could then be formatted in the gpx data type for analysis.
+    Code Example:
+    ```javascript
+    let data = {waypoints:[]}
+    for (let i = 0; i < response.routes[0].legs[0].steps.length; i++) {
+         for (let j = 0; j < response.routes[0].legs[0].steps[i].lat_lngs.length;j++){
+              data.waypoints.push({
+                    latitude: response.routes[0].legs[0].steps[i].lat_lngs[j].lat(),
+                    longitude: response.routes[0].legs[0].steps[i].lat_lngs[j].lng()
+              })
+         }
+     }  
+     ```
 #### Future Work
 
 1. Off-Road Capability
