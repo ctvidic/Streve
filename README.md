@@ -47,6 +47,20 @@ Google Charts was utilized for visualization tools. GPS to GPX package used for 
     
 2. #### Elevation Values:
     Google maps calculates elevation by selecting evenly spaced points along a line. Unfortunately in this project the line was dynamic and followed roads. To create an accurate elevation data set, up to 256 points are selected along the directions renderer response. If more than 256 points are present along the line, the difference was then randomly disposed of from the array. Although this creates less accurate data, this led to less storage constraints and a quicker response time.
+    Code Example:
+    ```javascript
+    for (let i = 0; i < response.routes[0].legs[0].steps.length; i++){
+                        elePoints = elePoints.concat(response.routes[0].legs[0].steps[i].lat_lngs)
+                    }
+                    let forLoopLength = elePoints.length
+                    if (elePoints.length > 256 && elePoints.length < 10000){
+                        for(let i=0;i<(forLoopLength - 256);i++){
+                            elePoints.splice(Math.random()*elePoints.length,1)
+                        }
+                    }else if(elePoints.length>=10000){
+                        elePoints = this.convPoints(waypoints);
+                    }
+     ```
 
 3. #### Exporting GPX:
     An GPS-to-GPX [package](https://www.npmjs.com/package/gps-to-gpx) was utilized to convert outputted google location data in the direction renderer to specific latitude longitude coordinates that could be downloaded and visualized off site. Nested for loops were used to accomplish this by analyzing each direction renderer segment and each lat/lng within them. 
