@@ -17,9 +17,9 @@ class ShowWorkout extends React.Component{
             }),
             data: {
                 waypoints: []
-            },
-            gpx: ''
+            }
         }
+        this.gpx = ''
     }
     componentDidMount() {
         const mapOptions = {
@@ -58,11 +58,6 @@ class ShowWorkout extends React.Component{
     }
     calculateCoords(coords){
         this.props.workout.coordinates = this.props.workout.coordinates.split('X').map(val => parseFloat(val)).slice(0,-1)
-        // for (let i = 0; i < this.props.workout.coordinates.length - 1; i += 2) {
-        //     this.props.data.waypoints.push({ latitude: this.props.workout.coordinates[i], longitude: this.props.workout.coordinates[i + 1] })
-        // }
-        // const gpx = createGpx(this.props.data.waypoints)
-        // debugger;
         this.state.directionsRenderer.setMap(this.map);
         let origin = this.findOrigin(this.props.workout.coordinates)
         let destination = this.findDestination(this.props.workout.coordinates)
@@ -76,17 +71,15 @@ class ShowWorkout extends React.Component{
             if (status === 'OK') {
                 let data = {waypoints:[]}
                 for (let i = 0; i < response.routes[0].legs[0].steps.length; i++) {
-
                     for (let j = 0; j < response.routes[0].legs[0].steps[i].lat_lngs.length;j++){
-
                     data.waypoints.push({
                         latitude: response.routes[0].legs[0].steps[i].lat_lngs[j].lat(),
                         longitude: response.routes[0].legs[0].steps[i].lat_lngs[j].lng()
                     })
                     }
-
                 }
-                this.state.gpx = createGpx(data.waypoints)
+                this.gpx= createGpx(data.waypoints)
+                // this.state.gpx = createGpx(data.waypoints)
                 this.state.directionsRenderer.setDirections(response);
                 
             } else {
@@ -103,7 +96,7 @@ class ShowWorkout extends React.Component{
         return newArr
     }
     downloadXML(){
-        const url = 'data:text/json;charset=utf-8,' + this.state.gpx;
+        const url = 'data:text/json;charset=utf-8,' + this.gpx;
         const link = document.createElement('a');
         link.download = `workout.gpx`;
         link.href = url;
@@ -160,7 +153,6 @@ class ShowWorkout extends React.Component{
         }else{
             createdAt = 'loading'
         }
-
         return(<div id="showWorkout">
             <div id="showWorkoutstats">
             <div id="titleBox">
