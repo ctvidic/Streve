@@ -42,7 +42,6 @@ class SessionForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    console.log('demologin');
     const player = { username: 'newuser',email: 'blahblahblah@gmail.com', password: 'password'}
     this.props.demoUserLogin(player).then(()=>{
     this.props.history.push(`./dashboard`)})
