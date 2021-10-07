@@ -142,9 +142,7 @@ class ShowWorkout extends React.Component{
             eleData = this.eleChart(splitEle);
         }
         let username 
-        debugger;
         if (this.props.username.users !== undefined){
-            debugger;
             username = this.props.username.users[this.props.workout.user_id].username
         }else{
             username = ""
