@@ -12,6 +12,7 @@
     font-family: 'Roboto', sans-serif;
 
 }
+
 #signupLink{
     position:fixed;
     z-index: 5; 
@@ -106,6 +107,9 @@
     flex-direction: column;
 }
 
+#base{
+    bottom: 0;
+}
 #copyright{
     font-family: 'Roboto', sans-serif;
     padding: 10px;
