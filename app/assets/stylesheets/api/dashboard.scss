@@ -67,18 +67,30 @@
 
 }
 
-#workoutCreator a{
+#workoutCreator{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
-   
     text-decoration:none; 
     color: black;
+    padding: 0px;
 }
 
+#workoutCreator:hover{
+    color:rgb(82, 149, 248);
+}
+
+#latestActivityLink:hover{
+    color:rgb(82, 149, 248);
+}
+#linkWorkoutCreator{
+    text-decoration: none;
+}
 #userFeed{
     margin-top: 36px;
 }
-
+#profBoxLink:hover{
+     color:rgb(82, 149, 248);
+}
 #smallWorkout{
     margin-top: 0px;
      background: rgb(255, 255, 255);
