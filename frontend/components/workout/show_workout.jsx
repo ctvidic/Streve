@@ -29,7 +29,8 @@ class ShowWorkout extends React.Component{
             disableDefaultUI: true,
             zoomControl: true,
         }
-        this.props.fetchWorkouts()
+        this.props.fetchWorkouts();
+        this.props.fetchUsers();
         this.map = new google.maps.Map(document.getElementById('showmap'), mapOptions);
 
        
@@ -132,7 +133,7 @@ class ShowWorkout extends React.Component{
         let eleData
         let pace = this.convertPace(this.props.workout.duration, this.props.workout.distance)
         let newTime = this.convertTime(this.props.workout.duration)
-        if (this.props.workout.coordinates !== undefined){
+            if (this.props.workout.coordinates !== undefined && typeof this.props.workout.coordinates === 'string'){
             this.calculateCoords(this.props.workout.coordinates)
         }
 
@@ -141,8 +142,10 @@ class ShowWorkout extends React.Component{
             eleData = this.eleChart(splitEle);
         }
         let username 
-        if (this.props.username[this.props.workout.user_id] !== undefined){
-            username = this.props.username[this.props.workout.user_id].username
+        debugger;
+        if (this.props.username.users !== undefined){
+            debugger;
+            username = this.props.username.users[this.props.workout.user_id].username
         }else{
             username = ""
         }
