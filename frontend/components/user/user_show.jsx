@@ -136,7 +136,7 @@ class UserShow extends React.Component{
                         <div id='topStatsTypeImage'>{this.activityImage(this.findWorkout(activity.workout_id).workout_type)}</div>
 
         </div>
-        <h1 id="smallworkouttitle"><NavLink to={`/workouts/${activity.workout_id}`}>{activity.title}</NavLink>
+        <h1 id="smallworkouttitle">{activity.title}
                         <div id="removeActivity">
                             {this.removeActivity(activity)}
                         </div></h1>
@@ -156,10 +156,12 @@ class UserShow extends React.Component{
             </div>
         </div>
         </div>
+        <NavLink to={`/workouts/${activity.workout_id}`}>
         <div id="staticMapImage">
                 <img id="static-map"
                         src={`https://maps.googleapis.com/maps/api/staticmap?size=1200x400&path=weight:3%7Ccolor:0xfc5200FF%7Cenc:${this.findWorkout(activity.workout_id).static_map}&key=${window.googleAPIKey}&map_id=2ce121783e577f4a`} />
         </div>
+        </NavLink>
         </div>))}
         </div>
         <div id="stats">

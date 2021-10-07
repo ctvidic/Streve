@@ -100,8 +100,8 @@ class ActivityForm extends React.Component{
                 <div>Duration (mins)</div><input type='number' value={this.state.duration} onChange={this.update('duration')}></input>
                 </div>
                 <div id="titleActivity"><div>Title</div><input type='text' onChange={this.update('title')} value={this.state.title}></input></div>
-                <div id="descriptionActivity">
-                <div>Description</div><textarea type='text' onChange={this.update('description')} value={this.state.description}></textarea></div>
+                {/* <div id="descriptionActivity">
+                {/* <div>Description</div><textarea type='text' onChange={this.update('description')} value={this.state.description}></textarea></div> */}
                 <div id="dateActivity">
                 <div>Date</div><input type='date' onChange={this.update('date')} value={this.state.date}></input></div>
                 <select id="activitySelectType" onChange={this.updateWorkoutType} value={this.state.workout_type}>
