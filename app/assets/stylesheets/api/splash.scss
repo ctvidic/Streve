@@ -96,10 +96,22 @@
     font-family: 'Roboto', sans-serif;
     font-size: 30px;
     color: ghostwhite;
-    padding: 20px;
+    padding: 10px;
+    padding-top: 20px;
     padding-right: 30px;
 }
+#leftbase{
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+}
 
+#copyright{
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    padding-right: 30px;
+    color: rgb(94, 94, 94);
+}
 #smalltext{
     color:  rgb(155, 155, 155);
     font-size: 10px;
@@ -153,54 +165,181 @@
     z-index: 100;
 }
 
-#logosLinkBottom{
-    z-index: 99;
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-}
 
-#logosGitBottom{
-    z-index: 99;
-    width: 40px;
-    height: 40px;
-    margin-top: 12px;
-    margin-right: 30px;
-}
+
+
 #logosGitBottom svg{
     z-index: 1000;
     color: white;
     z-index: 100;
 }
 
-@media (max-width: 920px) 
+@media (max-width: 1000px) 
 {
-    #phone
-    {
-        display: none;
-    }
+   
     #splash-header
     {
         font-size: 30px;
     }
-    #splash{
-        height: 100vh
-    }
+    // #splash{
+    //     height: 100vh
+    // }
     #base{
-        position: absolute;
+        // position: absolute;
         bottom: 0;
+    }
+        #phoneForm{
+        flex-direction: column;
     }
 }
 
 
-@media (max-width: 620px) 
+@media (max-width: 700px) 
 {
     #splash-header
     {
         font-size: 0px;
     }
     #base{
-        position: absolute;
+        // position: absolute;
         bottom: 0;
     }
+
+
+ 
+}
+
+@media (max-width: 900px)
+{
+        #linksBelow{
+        flex-direction: column;
+    }
+}
+
+#myLinksBase{
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+}
+
+#myLinksHeader{
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    padding-right: 30px;
+    color: rgb(94, 94, 94);
+    margin-top: 20px;
+}
+
+#logosAngelBottom{
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    margin-top: 12px;
+    margin-right: 30px;
+    color: white;
+    display: flex;    
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+}
+
+#logosGitBottom{
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    margin-top: 12px;
+    margin-right: 30px;
+    display: flex;    
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    color: white;
+}
+
+#logosLinkBottom{
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    display: flex;    
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    color: white;
+}
+
+#logosAngelBottom h1{
+    margin-left: 5px;
+    text-decoration: none;
+
+}
+
+#logosAngelBottom a{
+    text-decoration: none;
+    color: white
+}
+
+#logosLinkBottom h1{
+    margin-left: 5px;
+}
+
+#logosGitBottom h1{
+    margin-left: 5px;
+}
+#logosGitBottom a{
+    text-decoration: none;
+    color: white
+}
+
+#logosLinkBottom a{
+    text-decoration: none;
+    color: white
+}
+
+#checkUsOut{
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+}
+
+#signUpBase{
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    padding: 10px;
+    padding-top:20px;
+}
+
+
+#logInBase{
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+    padding: 10px;
+    padding-top:10px;
+    font-weight: lighter;
+}
+
+
+@media (max-width: 1200px) 
+{
+    #base
+    {
+        flex-direction: column;
+        // align-items: center;
+    }
+    #leftbase{
+        align-items: center;
+        margin-left: 0px;
+    }
+
+}
+
+#base{
+    min-height: 300px;
+    background-color: rgb(39, 41, 40);
+    z-index: 8;
+    color:rgb(70, 73, 71);
+    overflow:auto;
+    width: 100%
+}
+#linksBelow{
+    display: flex;;
 }
