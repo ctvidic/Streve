@@ -18,6 +18,7 @@ class Splash extends React.Component{
     }
     render(){
         return(<div id="splash">
+            <div id="topDivs">
             <div id="splash-header">
                 The absolute best app for runners and cyclists
             </div>
@@ -38,6 +39,7 @@ class Splash extends React.Component{
                     Already a Member? <Link to='/login'>Log In</Link>
                 </div>
                 </div>
+            </div>
             </div>
             <div id="base">
                 <div id="leftbase">
