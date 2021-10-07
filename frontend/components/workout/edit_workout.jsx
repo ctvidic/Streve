@@ -7,7 +7,6 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 class EditWorkout extends React.Component {
     constructor(props) {
         super(props)
-        debugger;
         this.state = {
             workout: props.workout,
             pins: '',

@@ -20,7 +20,7 @@ class Splash extends React.Component{
         return(<div id="splash">
             <div id="topDivs">
             <div id="splash-header">
-                The absolute best app for runners and cyclists
+                The #2 app for runners and cyclists
             </div>
             <div id="phoneForm">
                 <div id="phone">
@@ -69,7 +69,7 @@ class Splash extends React.Component{
                 <div id="checkUsOut">
                 <h1 id="myLinksHeader">Get Started</h1>
                 <Link to="/signup" id="signUpBase">Sign Up</Link>
-                    <Link to="/signup" id="logInBase">Log In</Link>
+                    <Link to="/login" id="logInBase">Log In</Link>
                 </div>
                 <div id="checkUsOut">
                     <h1 id="myLinksHeader">Strava Links</h1>

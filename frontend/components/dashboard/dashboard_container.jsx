@@ -7,7 +7,6 @@ import { fetchUsers } from '../../actions/user_actions';
 import { fetchActivities, deleteActivity } from '../../actions/activity_actions'
 
 const mapStateToProps = (state, ownProps) => {
-    debugger;
     return {
         currentUser: state.entities.users[state.session.id],
         ownProps: ownProps,
