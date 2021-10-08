@@ -3,7 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 var USERPIC = {
     'newuser': 'https://64.media.tumblr.com/17365056e618e2cdadf7859fd71b3bf4/tumblr_ntaxyxueNm1ue88ggo3_250.jpg',
-    // 'immanewuser': 'https://images.theconversation.com/files/133674/original/image-20160810-11853-1iw2v38.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop'
+    'chrisV': 'https://avatars.githubusercontent.com/u/80602202?v=4',
+    'notChrisV': 'https://i.redd.it/xh4xvvx22yt41.jpg'
 }
 
 class UserShow extends React.Component{
@@ -125,6 +126,18 @@ class UserShow extends React.Component{
             }
         }
     }
+    littleProf(username) {
+        if (username) {
+            if (USERPIC[username]) {
+                return (<img id='avatar' src={USERPIC[username]} alt="Avatar" />)
+
+            } else {
+                return (
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>
+                )
+            }
+        }
+    }
     render() {
         if (this.props.activities !== undefined && this.props.workouts !== undefined && this.props.user !== undefined) {
         return (
@@ -143,7 +156,8 @@ class UserShow extends React.Component{
         <div id='topStats'>
         <div id='topStatsFlex'>
         <div id='topimage'>
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg>
+        {this.littleProf(this.props.user.username)}
+        {/* <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg> */}
         <div>
         <h1 id="workoutCreator">{this.props.user.username}</h1>
         <h1 id="smallWorkoutcreatedAt">{activity.date}</h1>
