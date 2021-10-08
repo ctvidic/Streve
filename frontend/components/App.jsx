@@ -12,7 +12,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import DashboardContainer from './dashboard/dashboard_container'
 import EditWorkoutContainer from './workout/edit_workout_container'
 import { NavLink } from 'react-router-dom'
-
+import WorkoutsContainer from './workout/workouts_container'
 
 const App = () => (
     <div id='webpage'>
@@ -31,6 +31,7 @@ const App = () => (
             <ProtectedRoute exact path="/workouts/:id" component={ShowWorkoutContainer} />
             <ProtectedRoute exact path="/workouts/:id/edit" component={EditWorkoutContainer} />
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
+            <ProtectedRoute exact path="/workouts" component={WorkoutsContainer} />
             <AuthRoute exact path="/" component={SplashContainer} />
         </Switch>
     </div>

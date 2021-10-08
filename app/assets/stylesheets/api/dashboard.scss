@@ -323,3 +323,25 @@
     height:100px;
 }
 
+#workoutsCard h1{
+    font-family: 'Roboto', sans-serif;
+}
+#workoutsCard{
+    background-color: white;
+}
+#workoutsCard:hover{
+    transform: scale(1.03);
+}
+
+#workoutsCardTopText{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none !important;
+}
+#workoutsCardTopText h1{
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none !important;
+}

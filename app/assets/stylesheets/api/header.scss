@@ -163,3 +163,105 @@ header{
     color: gray;
 }
 
+
+
+#explore svg{
+    height: 35px;
+    width: 35px;  
+    position:fixed;
+    z-index: 5; 
+    top: 3px;
+    padding-top: 5px;
+    // padding-right: 12px;
+    // padding-left: 12px;
+    left: calc(10% + 150px);
+    font-family: 'Roboto', sans-serif;
+    color: rgb(253, 110, 57);
+    z-index: 105;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    padding-right:1px;
+}
+
+#explore svg:hover{
+    color: rgb(211, 92, 49);
+}
+
+#explore {
+    margin : 1px;
+}
+
+#exploreTitle{
+    left: calc(10% + 150px);
+    position:fixed;
+    z-index: 99999; 
+    top: 0px;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px solid red;
+    width: 100px;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#exploreTitle:hover{
+    color:red;
+    border-left: 1px solid rgb(179, 177, 177);
+    border-right: 1px solid rgb(179, 177, 177);
+}
+#CreateDropdownExplore{
+    background-color: rgb(252, 252, 252);
+    position: fixed;
+    // padding: 10px;
+    top: 50px;
+    font-family: 'Roboto', sans-serif;
+    // border-radius: 3px;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px !important;
+    border: 1px solid rgb(179, 177, 177);
+    z-index: 104;
+    left: calc(10% + 150px);
+    // padding: 10px;
+}
+
+#CreateDropdownExplore{
+    width: 200px;
+    align-items: center;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#CreateDropdownExplore a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+
+
+
+#CreateDropdownExplore li{
+    width: 200px;
+    align-items: center;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#CreateDropdownExplore li:hover{
+    background-color: rgb(202, 202, 202);
+
+}

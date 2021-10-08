@@ -1,0 +1,31 @@
+
+
+
+#workoutsHeader{
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+}
+
+#workoutsPage{
+    display: flex;
+    flex-direction: column;
+    top: 100px;
+    position: absolute;
+    left: 10%;
+    width: 80%;
+}
+
+#workoutsMatrix{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+#workoutsCard{
+    width: 250px;
+    height: 250px;
+    box-shadow: 0px 0 5px #e5e2e2;
+    border-radius: 5px;
+    margin: 20px;
+}
