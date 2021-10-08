@@ -6,6 +6,7 @@ import { fetchWorkouts } from '../../actions/workout_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { fetchActivities, deleteActivity } from '../../actions/activity_actions'
 
+
 const mapStateToProps = (state, ownProps) => {
     return {
         currentUser: state.entities.users[state.session.id],

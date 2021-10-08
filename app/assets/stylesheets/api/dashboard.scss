@@ -10,6 +10,7 @@
 
 
 #userProf{
+   
     //  border: 1px solid gray;
      width:300px !important;
      display: flex;
@@ -310,4 +311,13 @@
     {
         display: none;
     }
+}
+
+#avatar{
+    border-radius:50%;
+    height:40px;
+}
+#avatarBig{
+    border-radius:50%;
+    height:100px;
 }
