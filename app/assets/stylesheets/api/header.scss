@@ -86,7 +86,7 @@ header{
     background-color: rgb(252, 252, 252);
     position: fixed;
     // padding: 10px;
-    top: 50px;
+    top: 52px;
     font-family: 'Roboto', sans-serif;
     // border-radius: 3px;
     z-index: 100;
@@ -97,19 +97,40 @@ header{
     border: 1px solid rgb(179, 177, 177);
     z-index: 104;
     right: 100px;
-    padding: 10px;
+    // padding: 10px;
 }
 
 #CreateDropdown a{
-    padding: 5px;
+    // padding: 20px;
     font-size: 15px;
+}
+
+#CreateDropdown li{
+    width: 200px;
+    align-items: center;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#CreateDropdown li:hover{
+    background-color: rgb(202, 202, 202);
 
 }
-#CreateDropdown a:hover{
-    padding: 5px;
-    font-size: 15px;
-    font-weight: bold;
+
+#CreateDropdown a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
+// #CreateDropdown a:hover{
+//     // padding: 5px;
+//     font-size: 15px;
+//     // font-weight: bold;
+//         background-color: grey;
+// }
 
 #svgSelect svg{
     background-color: rgb(252, 252, 252);

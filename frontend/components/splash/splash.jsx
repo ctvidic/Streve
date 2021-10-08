@@ -71,11 +71,11 @@ class Splash extends React.Component{
                 <Link to="/signup" id="signUpBase">Sign Up</Link>
                     <Link to="/login" id="logInBase">Log In</Link>
                 </div>
-                <div id="checkUsOut">
+                {/* <div id="checkUsOut">
                     <h1 id="myLinksHeader">Strava Links</h1>
                     <a href="https://www.strava.com/" id="signUpBase">Strava</a>
                     <a href="https://www.strava.com/features" id="logInBase">About</a>
-                </div>
+                </div> */}
             </div>
             </div>
         </div>)
