@@ -389,7 +389,7 @@ class WorkoutForm extends React.Component{
                             Elevation Gain
                         </div>
                         <div id="climbDisplay">
-                            {this.state.climb} ft
+                            {this.state.climb} m
                         </div>
                     </div>
                     <div id="climb">
@@ -397,7 +397,7 @@ class WorkoutForm extends React.Component{
                             Elevation Loss
                         </div>
                         <div id="climbDisplay">
-                            {this.state.descent} ft
+                            {this.state.descent} m
                         </div>
                     </div>
                 </div>
