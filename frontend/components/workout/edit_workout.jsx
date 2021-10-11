@@ -70,7 +70,7 @@ class EditWorkout extends React.Component {
         }
         // this.state.workout
         this.props.editWorkout(submit).then(() => {
-            this.props.history.push(`../../users/${this.props.user_id}`)
+            this.props.history.push(`/workouts`)
         })
     }
 
