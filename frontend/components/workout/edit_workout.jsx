@@ -98,24 +98,17 @@ class EditWorkout extends React.Component {
             zoomControl: true,
         }
         this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        // this.directionsRenderer.setMap(this.map);
 
        
         google.maps.event.addListener(this.map, "click", (event) => {
             this.addPin(event.latLng, this.map)
         });
         this.setState({title: this.props.workout.title})
-        // this.calculateAndDisplayRoutes(this.map);
 
     }
 
     convPoints(points) {
         let newPoints = points.map(pointObj => new google.maps.LatLng(pointObj.location.lat, pointObj.location.lng))
-        // let newString = ''
-        // // for(let i =0; i<newPoints.length; i++){
-        // //     newString += newPoints[i][0] +','+newPoints[i][1] + ' | '
-        // // }
-        // // debugger
         return newPoints
     }
 
@@ -142,7 +135,6 @@ class EditWorkout extends React.Component {
         if (this.state.pins.length > 1) {
             this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
-            // let elePoints = this.convPoints(waypoints);
             let elePoints = [];
             let origin = waypoints.shift().location;
             let destination = waypoints.pop().location;
@@ -343,17 +335,8 @@ class EditWorkout extends React.Component {
                         <br></br>
                         <select id="workoutSelect" onChange={this.updateWorkoutType} value={this.state.workout_type}>
                             <option value="run">Run</option>
-                            {/* <option value="swim">Swim</option> */}
                             <option value="cycling">Cycling</option>
                         </select>
-                        {/* <button type='button' onClick={this.update('workout_type') value='cycling'}>Cycling</button> */}
-                        {/* <label>Elevation Change
-                        <input type='text' onChange={this.update('elevation_change')} value={this.state.elevation_change}></input>
-                    </label>
-                    <br></br> */}
-                        {/* <label>Distance
-                        <input type='text' onChange={this.update('distance')} value={this.state.distance}></input>
-                    </label> */}
                         <button id="submitWorkout" value='submit'>Submit Route</button>
                         <button id='loop' type='button' onClick={() => this.loopRoute()}>Loop Route</button>
                         <button id='removePoint' type='button' onClick={() => this.removeLastPoint()}>Remove Last Point</button>
