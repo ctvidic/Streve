@@ -192,27 +192,7 @@ class EditWorkout extends React.Component {
                     });
                 });
             }
-
-            // var polypath= new google.maps.Polyline({
-            //             path: elePoints,
-            //             geodesic: true,
-            //             strokeColor: "#FF0000",
-            //             strokeOpacity: 1.0,
-            //             strokeWeight: 2,
-            // })
-            // if (this.state.on_road){ 
-            //     polypath.setMap(null);
-            // }else{
-            //     polypath.setMap(this.map);
-            //     this.state.directionsRenderer.setMap(null);
-            // }
-
-
-
         }
-
-        // this.updatePins();
-        // this.setState({workout_type: 'run'})
     }
     changeRoads() {
         this.calculateAndDisplayRoutes(this.map)
@@ -320,10 +300,6 @@ class EditWorkout extends React.Component {
             <div id="workoutform">
                 <form onSubmit={(e) => this.submitForm(e)} id='mapForm'>
                     <div id="mapInput">
-                        {/* <label>Choose a route
-                        <input type='text' onChange={this.update('route_id')} value={this.state.route_id}></input>
-                    </label>
-                    <br></br> */}
                         <br></br>
                         <h1 id="routeHeader">Route Form</h1>
                         <br></br>

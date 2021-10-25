@@ -187,8 +187,6 @@ class Dashboard extends React.Component{
                             legend: {position: 'none'},
                             
                         }}
-                        // For tests
-                       
                     />
                 </div>
                

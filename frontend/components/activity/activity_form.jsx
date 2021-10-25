@@ -14,7 +14,6 @@ class ActivityForm extends React.Component{
             date: ''
         }
         this.updateWorkoutType = this.updateWorkoutType.bind(this)
-        // this.updateRoute = this.updateRoute(this)
     }
 
     componentDidMount(){

@@ -168,7 +168,6 @@ class ShowWorkout extends React.Component{
                 <div id="workoutdesc">{this.props.workout.description}</div>
             </div>
             <div id="boxright">
-            {/* <li>Type:{this.props.workout.workout_type}</li> */}
             <div id="topBoxRight">
             <h1>Distance: {this.props.workout.distance} mi </h1>
             <h1>Elevation Gain: {this.props.workout.elevation_change} m </h1>
