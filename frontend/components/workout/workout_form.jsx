@@ -86,14 +86,10 @@ class WorkoutForm extends React.Component{
             zoomControl: true,
         }
         this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        // this.directionsRenderer.setMap(this.map);
-
         const onChangeHandler = function () {
             calculateAndDisplayRoute(directionsService, directionsRenderer);
         };
-
-        this.polypath = {}
-        
+        this.polypath = {}   
         google.maps.event.addListener(this.map, "click", (event) => {
             this.addPin(event.latLng, this.map)
         });
@@ -102,11 +98,6 @@ class WorkoutForm extends React.Component{
 
     convPoints(points){
         let newPoints = points.map(pointObj => new google.maps.LatLng(pointObj.location.lat, pointObj.location.lng))
-        // let newString = ''
-        // // for(let i =0; i<newPoints.length; i++){
-        // //     newString += newPoints[i][0] +','+newPoints[i][1] + ' | '
-        // // }
-        // // debugger
         return newPoints
     }
 
@@ -122,6 +113,7 @@ class WorkoutForm extends React.Component{
         }
         return [Math.floor(climb),Math.floor(descent)]
     }
+
     calculateAndDisplayRoutes(map) {
             let distance;
             let pace;
@@ -130,7 +122,6 @@ class WorkoutForm extends React.Component{
             if (this.state.pins.length > 1){
                 this.state.directionsRenderer.setMap(map);
             let waypoints = this.state.pins.slice();
-            // let elePoints = this.convPoints(waypoints);
             let elePoints = [];
             let origin = waypoints.shift().location;
             let destination = waypoints.pop().location;
@@ -406,7 +397,3 @@ class WorkoutForm extends React.Component{
     }
 }
 export default WorkoutForm
-//GoogleApiWrapper({ apiKey: window.googleAPIKey})(WorkoutForm)
-// export default WorkoutForm
-// window.googleAPIKey
-// "AIzaSyAb2z7bbhF1gSlA7MbjLjg_kFhQzkTIad4"

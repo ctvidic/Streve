@@ -9,8 +9,7 @@ class WorkoutForm extends React.Component{
     componentDidMount(){
         this.props.fetchWorkouts(this.props.sessionId)
     }
-    render(){
-        
+    render(){   
         return(<div>yeeeeeeeee</div>)
     }
 }
