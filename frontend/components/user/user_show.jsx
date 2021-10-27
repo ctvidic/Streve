@@ -15,7 +15,6 @@ class UserShow extends React.Component{
     }
     componentDidMount() {
         this.props.fetchWorkouts().then(() => this.props.fetchUser(this.props.userId).then(() => { this.props.fetchActivities() }))
-
     }
 
     handleSubmit(){
